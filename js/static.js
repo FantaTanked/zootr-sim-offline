@@ -659,10 +659,10 @@ var locationsByRegionChild = {
       'KF Midos Top Left Chest', 'KF Midos Top Right Chest', 'KF Midos Bottom Left Chest', 'KF Midos Bottom Right Chest',
       'KF Kokiri Sword Chest', 'KF Storms Grotto Chest'
   ],
-  'Deku Tree': ['Deku Tree Lobby Chest', 'Deku Tree Compass Chest',
+  'Deku Tree': ['Deku Tree Map Chest', 'Deku Tree Compass Chest',
       'Deku Tree Compass Room Side Chest', 'Deku Tree Basement Chest', 'Deku Tree Slingshot Chest',
       'Deku Tree Slingshot Room Side Chest',
-      'Queen Gohma Heart', 'Queen Gohma'
+      'Deku Tree Queen Gohma Heart', 'Queen Gohma'
   ],
   'Lost Woods': [
       'LW Gift from Saria',
@@ -993,7 +993,7 @@ var utilityByRegionAdult = {};
 
 var gossipStonesByRegionAdult = {
     'Death Mountain Crater': ['Bombable Wall'],
-    'Death Mountain Trail': ['Biggoron'],
+    'Death Mountain Trail': ['Biggoron', 'Storms Grotto'],
     'Desert Colossus': ['Spirit Temple'],
     'Dodongos Cavern': ['Bombable Wall'],
     'Gerudo Valley': ['Waterfall'],
