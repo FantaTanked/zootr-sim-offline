@@ -499,7 +499,6 @@ $scope.hasBossKey = function(dungeon) {
       $scope.currentRegion = entrance;
     }
     $scope.updateForage();
-    console.log($scope.currentRegion)
   };
   
   $scope.dungeongrid = [
@@ -936,6 +935,50 @@ $scope.hasBossKey = function(dungeon) {
   
   $scope.playing = false;
   
+  function getChildRegion(region) {
+    if(region == 'Kak Backyard' || region == 'Kak Behind Gate') {
+      return 'Kakariko Village'
+    } else if (region == 'Death Mountain Summit') {
+      return 'Death Mountain Trail'
+    } else if (region == 'KF Links House') {
+      return 'Kokiri Forest'
+    } else if (region == 'ToT Entrance') {
+      return 'Temple of Time'
+    } else if (region == "LH Fishing Island") {
+      return 'Lake Hylia'
+    } else if (region == "DMC Lower Local") {
+      return 'Death Mountain Crater'
+    } else if (region == 'Graveyard Warp Pad Region') {
+      return 'Above Graveyard'
+    } else if (region == 'SFM Entryway') {
+      return 'Sacred Forest Meadow'
+    } else if (region == 'Death Mountain') {
+      return 'Death Mountain Trail'
+    }
+  }
+
+  function getAdultRegion(region) {
+    if(region == 'Kak Backyard' || region == 'Kak Behind Gate') {
+      return 'Kakariko Village'
+    } else if (region == 'Death Mountain Summit') {
+      return 'Death Mountain Trail'
+    } else if (region == 'KF Links House') {
+      return 'Kokiri Forest'
+    } else if (region == 'ToT Entrance') {
+      return 'Temple of Time'
+    } else if (region == "LH Fishing Island") {
+      return 'Lake Hylia'
+    } else if (region == "DMC Lower Local") {
+      return 'Death Mountain Crater'
+    } else if (region == 'Graveyard Warp Pad Region') {
+      return 'Above Graveyard'
+    } else if (region == 'SFM Entryway') {
+      return 'Sacred Forest Meadow'
+    } else if (region == 'Death Mountain') {
+      return 'Death Mountain Trail'
+    }
+  }
+
   $scope.parseLog = function(logfile) {
     if (typeof logfile == 'string') {
       logfile = JSON.parse(logfile);
@@ -963,49 +1006,18 @@ $scope.hasBossKey = function(dungeon) {
 
       var childRegion = logfile['entrances']['Child Spawn -> KF Links House']['region'];
 
-      if(childRegion == 'Kak Backyard' || childRegion == 'Kak Behind Gate') {
-        childRegion = 'Kakariko Village'
-      } else if (childRegion == 'Death Mountain Summit') {
-        childRegion = 'Death Mountain Trail'
-      } else if (childRegion == 'KF Links House') {
-        childRegion = 'Kokiri Forest'
-      } else if (childRegion == 'ToT Entrance') {
-        childRegion = 'Temple of Time'
-      } else if (childRegion == "LH Fishing Island") {
-        childRegion = 'Lake Hylia'
-      } else if (childRegion == "DMC Lower Local") {
-        childRegion = 'Death Mountain Crater'
-      } else if (childRegion == 'Graveyard Warp Pad Region') {
-        childRegion = 'Above Graveyard'
-      }
+      childRegion = getChildRegion(childRegion)
 
       $scope.child_spawn = childRegion;
-      $scope.child_spawn_text = logfile['randomized_settings']['starting_age'] == 'child' ? childRegion : '???';
+      child_spawn = childRegion;
+      $scope.child_spawn_text = logfile['randomized_settings']['starting_age'] == 'child' ? childRegion : '???';      
 
       var adultRegion = logfile['entrances']['Adult Spawn -> Temple of Time']['region'];
 
-      console.log(adultRegion)
-
-      if(adultRegion == 'Kak Backyard' || adultRegion == 'Kak Behind Gate') {
-        adultRegion = 'Kakariko Village'
-      } else if (adultRegion == 'Death Mountain Summit') {
-        adultRegion = 'Death Mountain Trail'
-      } else if (adultRegion == 'KF Links House') {
-        adultRegion = 'Kokiri Forest'
-      } else if (adultRegion == 'ToT Entrance') {
-        adultRegion = 'Temple of Time'
-      } else if (adultRegion == "LH Fishing Island") {
-        adultRegion = 'Lake Hylia'
-      } else if (adultRegion == "DMC Lower Local") {
-        adultRegion = 'Death Mountain Crater'
-      } else if (adultRegion == 'Graveyard Warp Pad Region') {
-        adultRegion = 'Above Graveyard'
-      }
-
-
-      console.log(adultRegion)
+      adultRegion = getAdultRegion(adultRegion)
 
       $scope.adult_spawn = adultRegion;
+      adult_spawn = adultRegion;
       //$scope.adult_spawn_text = logfile['randomized_settings']['starting_age'] == 'adult' ? logfile['entrances']['Adult Spawn -> Temple of Time']['region'] : '???';
       $scope.adult_spawn_text = logfile['randomized_settings']['starting_age'] == 'adult' ? adultRegion : '???';;
       var results = logfile['locations'];
@@ -1056,13 +1068,11 @@ $scope.hasBossKey = function(dungeon) {
         $scope.gossipHints[region][stone] = logfile['gossip_stones'][hint]['text'].replace(/#/g,'');
       }
 
-      console.log($scope.gossipHints)
-
       $scope.gossipHints['Kokiri Forest'] = $scope.gossipHints['KF'];
       $scope.gossipHints['Lost Woods'] = $scope.gossipHints['LW'];
       $scope.gossipHints['Sacred Forest Meadow'] = $scope.gossipHints['SFM'];
       $scope.gossipHints['Death Mountain Crater'] = $scope.gossipHints['DMC'];
-      $scope.gossipHints['Death Mountain Trial'] = $scope.gossipHints['DMT'];
+      $scope.gossipHints['Death Mountain Trail'] = $scope.gossipHints['DMT'];
       $scope.gossipHints['Goron City'] = $scope.gossipHints['GC'];
       $scope.gossipHints['Gerudo Valley'] = $scope.gossipHints['GV'];
       $scope.gossipHints['Hyrule Castle'] = $scope.gossipHints['HC'];
@@ -1099,9 +1109,7 @@ $scope.hasBossKey = function(dungeon) {
       $scope.currentAge = logfile['randomized_settings']['starting_age'] == 'child' ? 'Child' : 'Adult';
 
       $scope.currentRegion = $scope.currentAge == 'Child' ? childRegion : adultRegion;
-
-      console.log($scope.currentRegion)
-
+      $scope.checkLocation('Song from Impa')
 
       $scope.updateForage();
     }
@@ -1187,12 +1195,11 @@ $scope.hasBossKey = function(dungeon) {
     forageItems.forEach(function(item) {
       localforage.setItem(item, $scope[item]);
     });    
-    console.log($scope['currentSpoilerLog']['entrances'])
-    localforage.setItem('child_spawn', $scope['currentSpoilerLog']['entrances']['Child Spawn -> KF Links House']['region']);
-    localforage.setItem('child_spawn_text', $scope['currentSpoilerLog']['entrances']['Child Spawn -> KF Links House']['region']);
+    localforage.setItem('child_spawn', getChildRegion($scope['currentSpoilerLog']['entrances']['Child Spawn -> KF Links House']['region']));
+    localforage.setItem('child_spawn_text', getChildRegion($scope['currentSpoilerLog']['entrances']['Child Spawn -> KF Links House']['region']));
     localforage.setItem('checked_child_spawn', checked_child_spawn);
-    localforage.setItem('adult_spawn', $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time']['region']);
-    localforage.setItem('adult_spawn_text', $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time']['region']);
+    localforage.setItem('adult_spawn', getAdultRegion($scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time']['region']));
+    localforage.setItem('adult_spawn_text', getAdultRegion($scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time']['region']));
     localforage.setItem('checked_adult_spawn', checked_adult_spawn);
     localforage.setItem('playing', $scope.playing);
     localforage.setItem('fsHash', $scope.fsHash);
@@ -1210,9 +1217,9 @@ $scope.hasBossKey = function(dungeon) {
       $scope['child_spawn_text'] = checked_child_spawn == true ? results[31] : '???';
       child_spawn = results[31];
 
-      checked_adult_spawn = checked_adult_spawn == true ? results[36] : '???';
+      checked_adult_spawn = results[36];
       adult_spawn = results[34];
-      $scope['adult_spawn_text'] = checked_adult_spawn == true ? results[36] : '???';
+      $scope['adult_spawn_text'] = checked_adult_spawn == true ? results[35] : '???';
 
     }
     $scope.$apply();
