@@ -1,5 +1,7 @@
 zootr-sim-offline - works with 6.0
 
+https://fantatanked.github.io/zootr-sim-offline/
+
 If you load a log and the spawn doesn't give you access to any checks or other areas, you will have to alter the log so that the spawn in an actual region.
 
 E.g. 
