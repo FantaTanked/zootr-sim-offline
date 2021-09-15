@@ -1019,7 +1019,7 @@ var spawnsByRegion = {
     "Zora River":                    ['Zora River', 'ZR Behind Waterfall', 'ZR Front'],
     "Sacred Forest Meadow":          ['SFM Entryway', 'SFM Wolfos Grotto', 'SFM Fairy Grotto'],
     "Hyrule Field":                  ['Hyrule Field'],
-    "Lake Hylia":                    ['Lake Hylia', 'LH Lab', 'LH Fishing Hole'],
+    "Lake Hylia":                    ['Lake Hylia', 'LH Lab', 'LH Fishing Hole', 'LH Fishing Island'],
     "Gerudo Valley":                 ['Gerudo Valley', 'GV Fortress Side'],
     "Market":                        ['Market', 'Market Entrance', 'Market Mask Shop', 'Market Guard House', 'Market Bombchu Bowling', 'Market Potion Shop', 'Market Treasure Chest Game',
                                      'Market Bombchu Shop', 'Market Man in Green House', 'Market Shooting Gallery', 'Market Bazaar'],
