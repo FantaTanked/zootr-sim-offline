@@ -694,7 +694,7 @@ var locationsByRegionChild = {
       'Market Treasure Chest Game Reward'
   ],
   'Temple of Time': ['Check Pedestal (Stones)'],
-  'Hyrule Castle': ['Hyrule Castle Fairy Reward'],
+  'Hyrule Castle': ['HC Great Fairy Reward'],
   'Lon Lon Ranch': [
       'Song from Malon',
       'LLR Talons Chickens',
@@ -1009,3 +1009,43 @@ var gossipStonesByRegionAdult = {
     'Zoras Fountain': ['Fairy', 'Jabu'],
     'Zoras River': ['Plateau', 'Waterfall'],
 };
+
+// Need to add certain spawns to other maps for logical reasons, add a line saying where the spawn is so players can know the checks they can get?.
+var spawnsByRegion = {
+    "Kokiri Forest":                 ['Kokiri Forest', 'KF Midos House', 'KF Sarias House', 'KF House of Twins', 'KF Know It All House', 'KF Kokiri Shop', 'KF Links House'],
+    "LW Bridge From Forest":         ['LW Bridge From Forest', 'LW Bridge'],
+    "Lost Woods":                    ['Lost Woods', 'LW Beyond Mido', 'LW Forest Exit', 'Deku Theater'],
+    "Goron City":                    ['GC Woods Warp', 'GC Darunias Chamber', 'Goron City', 'GC Shop'],
+    "Zora River":                    ['Zora River', 'ZR Behind Waterfall', 'ZR Front'],
+    "Sacred Forest Meadow":          ['SFM Entryway', 'SFM Wolfos Grotto', 'SFM Fairy Grotto'],
+    "Hyrule Field":                  ['Hyrule Field'],
+    "Lake Hylia":                    ['Lake Hylia', 'LH Lab', 'LH Fishing Hole'],
+    "Gerudo Valley":                 ['Gerudo Valley', 'GV Fortress Side'],
+    "Market":                        ['Market', 'Market Entrance', 'Market Mask Shop', 'Market Guard House', 'Market Bombchu Bowling', 'Market Potion Shop', 'Market Treasure Chest Game',
+                                     'Market Bombchu Shop', 'Market Man in Green House', 'Market Shooting Gallery', 'Market Bazaar'],
+    "Kakariko Village":              ['Kakariko Village', 'Kak Behind Gate', 'Kak Impas Ledge', 'Kak Potion Shop Front', 'Kak Potion Shop Back', 'Kak Carpenter Boss House',
+                                     'Kak House of Skulltula', 'Kak Impas House', 'Kak Impas House Back', 'Kak Odd Medicine Building', 'Kak Shooting Gallery', 'Kak Windmill', 
+                                     'Kak Bazaar', 'Kak Redead Grotto', 'Kak Backyard'],
+    "Lon Lon Ranch":                 ['Lon Lon Ranch', 'LLR Talons House', 'LLR Stables', 'LLR Tower'],
+    "Zoras Domain":                  ['Zoras Domain', 'ZD Behind King Zora', 'ZD Shop'],
+    "Gerudo Fortress":               ['Gerudo Fortress', 'GF Outside Gate', 'GV Carpenter Tent'],
+    "Haunted Wasteland":             ['Wasteland Near Fortress', 'Wasteland Near Colossus'],
+    "Desert Colossus":               ['Desert Colossus', 'Colossus Great Fairy Fountain'],
+    "Hyrule Castle":                 ['Castle Grounds', 'HC Great Fairy Fountain'],
+    "Temple of Time":                ['ToT Entrance', 'Temple of Time'],
+    "Graveyard":                     ['Graveyard', 'Graveyard Dampes House', 'Graveyard Royal Familys Tomb', 'Graveyard Dampes Grave', 'Graveyard Shield Grave', 'Graveyard Heart Piece Grave'],
+    "Death Mountain Trail":          ['Death Mountain', 'Death Mountain Summit', 'DMT Great Fairy Fountain'],
+    "Death Mountain Crater":         ['DMC Lower Local', 'DMC Lower Nearby', 'DMC Upper Local', 'DMC Upper Nearby', 'DMC Great Fairy Fountain'],
+    "Zoras Fountain":                ['Zoras Fountain', 'ZF Great Fairy Fountain'],
+    "Outside Ganons Castle":         ['OGC Great Fairy Fountain'],
+}
+
+function getSpawn(spawnFromLog) {
+  var region;
+  Object.keys(spawnsByRegion).forEach(function(item) { 
+    if(spawnsByRegion[item].includes(spawnFromLog)) {        
+      region = item;
+    } 
+  })
+  return region;
+}

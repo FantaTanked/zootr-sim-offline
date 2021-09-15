@@ -1,7 +1,9 @@
 var app = angular.module('zootrSim', []);
 
 var child_spawn;
+var child_spawn_text;
 var adult_spawn;
+var adult_spawn_text;
 
 var checked_child_spawn = false;
 var checked_adult_spawn = false;
@@ -461,14 +463,14 @@ $scope.hasBossKey = function(dungeon) {
       $scope.currentAge = 'Child';
     }
     else if (entrance == 'Savewarp Child') {
-      $scope.currentRegion = child_spawn;
-      $scope.child_spawn_text = $scope.child_spawn;
+      $scope.currentRegion = getSpawn($scope['currentSpoilerLog']['entrances']['Child Spawn -> KF Links House']['region'] === undefined ? $scope['currentSpoilerLog']['entrances']['Child Spawn -> KF Links House'] : $scope['currentSpoilerLog']['entrances']['Child Spawn -> KF Links House']['region']);
+      $scope.child_spawn_text = $scope['currentSpoilerLog']['entrances']['Child Spawn -> KF Links House']['region'] === undefined ? $scope['currentSpoilerLog']['entrances']['Child Spawn -> KF Links House'] : $scope['currentSpoilerLog']['entrances']['Child Spawn -> KF Links House']['region'];
       checked_child_spawn = true;
       $scope.route += 'Savewarp\n';
     }
     else if (entrance == 'Savewarp Adult') {
-      $scope.currentRegion = adult_spawn;
-      $scope.adult_spawn_text = $scope.adult_spawn;
+      $scope.currentRegion = getSpawn($scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time']['region'] === undefined ? $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time'] : $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time']['region']);
+      $scope.adult_spawn_text = $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time']['region'] === undefined ? $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time'] : $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time']['region'];
       checked_adult_spawn = true;
       $scope.route += 'Savewarp\n';
     }
@@ -934,52 +936,9 @@ $scope.hasBossKey = function(dungeon) {
   };
   
   $scope.playing = false;
-  
-  function getChildRegion(region) {
-    if(region == 'Kak Backyard' || region == 'Kak Behind Gate') {
-      return 'Kakariko Village'
-    } else if (region == 'Death Mountain Summit') {
-      return 'Death Mountain Trail'
-    } else if (region == 'KF Links House') {
-      return 'Kokiri Forest'
-    } else if (region == 'ToT Entrance') {
-      return 'Temple of Time'
-    } else if (region == "LH Fishing Island") {
-      return 'Lake Hylia'
-    } else if (region == "DMC Lower Local") {
-      return 'Death Mountain Crater'
-    } else if (region == 'Graveyard Warp Pad Region') {
-      return 'Above Graveyard'
-    } else if (region == 'SFM Entryway') {
-      return 'Sacred Forest Meadow'
-    } else if (region == 'Death Mountain') {
-      return 'Death Mountain Trail'
-    }
-  }
-
-  function getAdultRegion(region) {
-    if(region == 'Kak Backyard' || region == 'Kak Behind Gate') {
-      return 'Kakariko Village'
-    } else if (region == 'Death Mountain Summit') {
-      return 'Death Mountain Trail'
-    } else if (region == 'KF Links House') {
-      return 'Kokiri Forest'
-    } else if (region == 'ToT Entrance') {
-      return 'Temple of Time'
-    } else if (region == "LH Fishing Island") {
-      return 'Lake Hylia'
-    } else if (region == "DMC Lower Local") {
-      return 'Death Mountain Crater'
-    } else if (region == 'Graveyard Warp Pad Region') {
-      return 'Above Graveyard'
-    } else if (region == 'SFM Entryway') {
-      return 'Sacred Forest Meadow'
-    } else if (region == 'Death Mountain') {
-      return 'Death Mountain Trail'
-    }
-  }
 
   $scope.parseLog = function(logfile) {
+    console.log("parsing")
     if (typeof logfile == 'string') {
       logfile = JSON.parse(logfile);
     }
@@ -994,7 +953,7 @@ $scope.hasBossKey = function(dungeon) {
     // }
 
     child_spawn = logfile['entrances']['Child Spawn -> KF Links House']['region'];
-    adult_spawn = logfile['entrances']['Adult Spawn -> Temple of Time']['region'];
+    adult_spawn = logfile['entrances']['Adult Spawn -> Temple of Time']['region'];   
 
     var spawn_age = logfile['randomized_settings']['starting_age'];
 
@@ -1004,22 +963,25 @@ $scope.hasBossKey = function(dungeon) {
     try {
       $scope.currentSeed = logfile[':seed'];
 
-      var childRegion = logfile['entrances']['Child Spawn -> KF Links House']['region'];
+      var childRegion = logfile['entrances']['Child Spawn -> KF Links House']['region'] === undefined ? logfile['entrances']['Child Spawn -> KF Links House'] : logfile['entrances']['Child Spawn -> KF Links House']['region'];
+      var childRegionText = logfile['entrances']['Child Spawn -> KF Links House']['region'] === undefined ? logfile['entrances']['Child Spawn -> KF Links House'] : logfile['entrances']['Child Spawn -> KF Links House']['region'];
 
-      childRegion = getChildRegion(childRegion)
+      childRegion = getSpawn(childRegion)
 
       $scope.child_spawn = childRegion;
       child_spawn = childRegion;
-      $scope.child_spawn_text = logfile['randomized_settings']['starting_age'] == 'child' ? childRegion : '???';      
+      $scope.child_spawn_text = logfile['randomized_settings']['starting_age'] == 'child' ? childRegionText : '???';      
+      child_spawn_text = childRegionText;
 
-      var adultRegion = logfile['entrances']['Adult Spawn -> Temple of Time']['region'];
-
-      adultRegion = getAdultRegion(adultRegion)
+      var adultRegion = logfile['entrances']['Adult Spawn -> Temple of Time']['region'] === undefined ? logfile['entrances']['Adult Spawn -> Temple of Time'] : logfile['entrances']['Adult Spawn -> Temple of Time']['region'];
+      var adultRegionText = logfile['entrances']['Adult Spawn -> Temple of Time']['region'] === undefined ? logfile['entrances']['Adult Spawn -> Temple of Time'] : logfile['entrances']['Adult Spawn -> Temple of Time']['region'];
+      adultRegion = getSpawn(adultRegion)
 
       $scope.adult_spawn = adultRegion;
       adult_spawn = adultRegion;
+      adult_spawn_text = adultRegionText;
       //$scope.adult_spawn_text = logfile['randomized_settings']['starting_age'] == 'adult' ? logfile['entrances']['Adult Spawn -> Temple of Time']['region'] : '???';
-      $scope.adult_spawn_text = logfile['randomized_settings']['starting_age'] == 'adult' ? adultRegion : '???';;
+      $scope.adult_spawn_text = logfile['randomized_settings']['starting_age'] == 'adult' ? adultRegionText : '???';;
       var results = logfile['locations'];
       $scope.fsHash = logfile['file_hash'];
       $scope.isShopsanity = logfile['settings']['shopsanity'] != 'off';
@@ -1084,7 +1046,6 @@ $scope.hasBossKey = function(dungeon) {
       $scope.gossipHints["Zoras Fountain"] = $scope.gossipHints['ZF'];
       $scope.gossipHints["Zora River"] = $scope.gossipHints['ZR'];
       $scope.gossipHints["Desert Colossus"] = $scope.gossipHints['Colossus']
-
 
       $scope.checkedLocations.push('Links Pocket');
       $scope.currentItemsAll.push($scope.allLocations['Links Pocket']);
@@ -1195,11 +1156,16 @@ $scope.hasBossKey = function(dungeon) {
     forageItems.forEach(function(item) {
       localforage.setItem(item, $scope[item]);
     });    
-    localforage.setItem('child_spawn', getChildRegion($scope['currentSpoilerLog']['entrances']['Child Spawn -> KF Links House']['region']));
-    localforage.setItem('child_spawn_text', getChildRegion($scope['currentSpoilerLog']['entrances']['Child Spawn -> KF Links House']['region']));
+
+    
+    var localChildSpawn = $scope['currentSpoilerLog']['entrances']['Child Spawn -> KF Links House']['region'] === undefined ? $scope['currentSpoilerLog']['entrances']['Child Spawn -> KF Links House'] : $scope['currentSpoilerLog']['entrances']['Child Spawn -> KF Links House']['region'];
+    var localAdultSpawn = $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time']['region'] === undefined ? $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time'] : $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time']['region'];
+
+    localforage.setItem('child_spawn', getSpawn(localChildSpawn));
+    localforage.setItem('child_spawn_text', localChildSpawn);
     localforage.setItem('checked_child_spawn', checked_child_spawn);
-    localforage.setItem('adult_spawn', getAdultRegion($scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time']['region']));
-    localforage.setItem('adult_spawn_text', getAdultRegion($scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time']['region']));
+    localforage.setItem('adult_spawn', getSpawn(localAdultSpawn));
+    localforage.setItem('adult_spawn_text', localAdultSpawn);
     localforage.setItem('checked_adult_spawn', checked_adult_spawn);
     localforage.setItem('playing', $scope.playing);
     localforage.setItem('fsHash', $scope.fsHash);
@@ -1208,19 +1174,20 @@ $scope.hasBossKey = function(dungeon) {
   Promise.all(
     forageItems.map(x => localforage.getItem(x))
   ).then(function(results) {    
+    console.log(results)
+
+    checked_child_spawn = results[33];
+    child_spawn_text = checked_child_spawn == true ? results[32] : '???';
+    child_spawn = results[31];
+
+    checked_adult_spawn = results[36];
+    adult_spawn_text = checked_adult_spawn == true ? results[35] : '???';
+    adult_spawn = results[34];
+
     for (var i = 0; i < forageItems.length; i++) {
       if (results[i] != null && results[i] != undefined) {   
         $scope[forageItems[i]] = results[i];
-      }
-
-      checked_child_spawn = results[33];
-      $scope['child_spawn_text'] = checked_child_spawn == true ? results[31] : '???';
-      child_spawn = results[31];
-
-      checked_adult_spawn = results[36];
-      adult_spawn = results[34];
-      $scope['adult_spawn_text'] = checked_adult_spawn == true ? results[35] : '???';
-
+      }   
     }
     $scope.$apply();
   });
