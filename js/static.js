@@ -786,7 +786,7 @@ var locationsByRegionChild = {
       'Dodongos Cavern Bomb Bag Chest',
       'Dodongos Cavern End of Bridge Chest',
       'Dodongos Cavern Boss Room Chest',
-      'Dodongos Cavern King Dodongo Heart'
+      'Dodongos Cavern King Dodongo Heart', 'King Dodongo'
   ],
   'Zora River': [
       'ZR Magic Bean Salesman',
@@ -801,7 +801,8 @@ var locationsByRegionChild = {
   'Jabu Jabus Belly': ['Jabu Jabus Belly Boomerang Chest',
       'Jabu Jabus Belly Map Chest',
       'Jabu Jabus Belly Compass Chest',
-      'Jabu Jabus Belly Barinade Heart'
+      'Jabu Jabus Belly Barinade Heart',
+                       , 'Barinade'
   ]
 };
 
