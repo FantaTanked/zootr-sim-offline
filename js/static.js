@@ -70,7 +70,7 @@ var importantItems = [
   'Small Key (Spirit Temple)',
   'Small Key (Shadow Temple)',
   'Small Key (Bottom of the Well)',
-  'Small Key (Gerudo Training Grounds)',
+  'Small Key (Gerudo Training Ground)',
   'Small Key (Gerudo Fortress)',
   'Small Key (Ganons Castle)',
   'Zeldas Letter',
@@ -539,8 +539,8 @@ var hintLocationsMeanings = {
   "the Water Temple Gilded Chest holds": "Water Temple MQ Boss Key Chest/Water Temple Boss Key Chest",
   "deep under the lake, the apparent key is really": "Water Temple MQ Freestanding Key",
   "deep under the lake, the locked spider holds": "GS Water Temple MQ North Basement",
-  "those who seek sunken silver rupees will find": "Gerudo Training Grounds MQ Underwater Silver Rupee Chest/Gerudo Training Grounds Underwater Silver Rupee Chest",
-  "the final prize of the thieves' training is": "Gerudo Training Grounds MQ Ice Arrows Chest/Gerudo Training Grounds Maze Path Final Chest",
+  "those who seek sunken silver rupees will find": "Gerudo Training Ground MQ Underwater Silver Rupee Chest/Gerudo Training Ground Underwater Silver Rupee Chest",
+  "the final prize of the thieves' training is": "Gerudo Training Ground MQ Ice Arrows Chest/Gerudo Training Ground Maze Path Final Chest",
   "Dead Hand holds": "Bottom of the Well MQ Compass Chest/Bottom of the Well Defeat Boss",
   "Dead Hand in the well holds": "Bottom of the Well MQ Compass Chest/Bottom of the Well Defeat Boss",
   "upon the Colossus's right hand is": "Silver Gauntlets Chest",
@@ -588,8 +588,8 @@ var hintLocationsMeanings = {
   'Ice Cavern': 'Ice Cavern',
   'a shadow\'s prison': 'Bottom of the Well',
   'Bottom of the Well': 'Bottom of the Well',
-  'the test of thieves': 'Gerudo Training Grounds',
-  'Gerudo Training Grounds': 'Gerudo Training Grounds',
+  'the test of thieves': 'Gerudo Training Ground',
+  'Gerudo Training Ground': 'Gerudo Training Ground',
   'outside Ganon\'s Castle': 'Outside Ganon\'s Castle',
   'a conquered citadel': 'Ganon\'s Castle',
   'Ganon\'s Castle': 'Ganon\'s Castle',
@@ -654,156 +654,32 @@ var regionChangingChecks = {
 };
 
 var locationsByRegionChild = {
-  'LW Bridge From Forest': [''],
-  'Kokiri Forest': [
-      'KF Midos Top Left Chest', 'KF Midos Top Right Chest', 'KF Midos Bottom Left Chest', 'KF Midos Bottom Right Chest',
-      'KF Kokiri Sword Chest', 'KF Storms Grotto Chest'
-  ],
-  'Deku Tree': ['Deku Tree Map Chest', 'Deku Tree Compass Chest',
-      'Deku Tree Compass Room Side Chest', 'Deku Tree Basement Chest', 'Deku Tree Slingshot Chest',
-      'Deku Tree Slingshot Room Side Chest',
-      'Deku Tree Queen Gohma Heart', 'Queen Gohma'
-  ],
-  'Lost Woods': [
-      'LW Gift from Saria',
-      'LW Ocarina Memory Game',
-      'LW Target in Woods',
-      'LW Near Shortcuts Grotto Chest',
-      'Deku Theater Skull Mask',
-      'LW Skull Kid',
-      'LW Deku Scrub Near Bridge',
-      'LW Deku Scrub Grotto Front'
-  ],
-  'Sacred Forest Meadow': [
-      'Song from Saria', 'SFM Wolfos Grotto Chest'
-  ],
-  'Hyrule Field': [
-      'HF Ocarina of Time Item',
-      'HF Near Market Grotto Chest',
-      'HF Tektite Grotto Freestanding PoH',
-      'HF Southeast Grotto Chest',
-      'HF Open Grotto Chest', 
-      "HF Deku Scrub Grotto"
-  ],
-  'Market': [
-      'Market Shooting Gallery Reward',
-      'Market Bombchu Bowling First Prize',
-      'Market Bombchu Bowling Second Prize',
-      'Market Bombchu Bowling Bombchus',
-      'Market Lost Dog',
-      'Market Treasure Chest Game Reward'
-  ],
+  'Kokiri Forest': ['Kokiri Sword Chest', 'Mido Chest Top Left', 'Mido Chest Top Right', 'Mido Chest Bottom Left', 'Mido Chest Bottom Right', 'Kokiri Forest Storms Grotto Chest'],
+  'Deku Tree': ['Deku Tree Lobby Chest', 'Deku Tree Compass Chest', 'Deku Tree Compass Room Side Chest', 'Deku Tree Basement Chest', 'Deku Tree Slingshot Chest', 'Deku Tree Slingshot Room Side Chest', 'Deku Tree MQ Lobby Chest', 'Deku Tree MQ Slingshot Chest', 'Deku Tree MQ Slingshot Room Back Chest', 'Deku Tree MQ Basement Chest', 'Deku Tree MQ Compass Chest', 'Deku Tree MQ Before Spinning Log Chest', 'Deku Tree MQ After Spinning Log Chest', 'DT MQ Deku Scrub Deku Shield', 'Queen Gohma Heart', 'Queen Gohma'],
+  'Lost Woods': ['Skull Kid', 'Ocarina Memory Game', 'Target in Woods', 'Deku Salesman Woods', 'LW Deku Scrub Deku Stick Upgrade', 'LW Deku Scrub Deku Nuts', 'LW Deku Scrub Deku Sticks', 'LW Grotto Deku Scrub Arrows', 'Lost Woods Generic Grotto Chest', 'Deku Theater Skull Mask', 'Deku Theater Mask of Truth', 'Deku Salesman Lost Woods Grotto', 'LW Grotto Deku Scrub Deku Nut Upgrade'],
+  'Sacred Forest Meadow': ['Song from Saria', 'Wolfos Grotto Chest', 'SFM Grotto Deku Scrub Red Potion', 'SFM Grotto Deku Scrub Green Potion'],
+  'Hyrule Field': ['Ocarina of Time', 'Song from Ocarina of Time', 'Remote Southern Grotto Chest', 'Field Near Lake Outside Fence Grotto Chest', 'Deku Salesman Hyrule Field Grotto', 'HF Grotto Deku Scrub Piece of Heart', 'Field West Castle Town Grotto Chest', 'Tektite Grotto Freestanding PoH', 'HF Grotto Cow'],
+  'Market': ['Child Shooting Gallery', 'Bombchu Bowling Bomb Bag', 'Bombchu Bowling Piece of Heart', 'Treasure Chest Game', 'Dog Lady'],
   'Temple of Time': ['Check Pedestal (Stones)'],
-  'Hyrule Castle': ['HC Great Fairy Reward'],
-  'Lon Lon Ranch': [
-      'Song from Malon',
-      'LLR Talons Chickens',
-      'LLR Freestanding PoH'
-  ],
-  'Lake Hylia': [
-      'LH Underwater Item',
-      'LH Child Fishing',
-      'LH Lab Dive'
-  ],
-  'Gerudo Valley': [
-      'GV Crate Freestanding PoH',
-      'GV Waterfall Freestanding PoH'
-  ],
-  'Desert Colossus': [
-      'Colossus Great Fairy Reward',
-      'Colossus Freestanding PoH',
-      'Sheik at Colossus'
-  ],
-  'Haunted Wasteland': ['Wasteland Chest'],
-  'Spirit Temple': [
-      'Spirit Temple Child Bridge Chest',
-      'Spirit Temple Child Early Torches Chest',
-      'Spirit Temple Child Climb North Chest',
-      'Spirit Temple Child Climb East Chest',
-      'Spirit Temple Map Chest',
-      'Spirit Temple Sun Block Room Chest',
-      'Spirit Temple Silver Gauntlets Chest'
-  ],
-  'Kakariko Village': [
-      'Kak Anju as Child',
-      'Kak Impas House Freestanding PoH',
-      'Kak Man on Roof',
-      'Kak Open Grotto Chest',
-      'Kak Redead Grotto Chest',
-      'Kak 10 Gold Skulltula Reward',
-      'Kak 20 Gold Skulltula Reward',
-      'Kak 30 Gold Skulltula Reward',
-      'Kak 40 Gold Skulltula Reward',
-      'Kak 50 Gold Skulltula Reward'
-  ],
-  'Bottom of the Well': [
-      'Bottom of the Well Front Left Fake Wall Chest',
-      'Bottom of the Well Front Center Bombable Chest',
-      'Bottom of the Well Back Left Bombable Chest',
-      'Bottom of the Well Underwater Left Chest',
-      'Bottom of the Well Freestanding Key',
-      'Bottom of the Well Compass Chest',
-      'Bottom of the Well Center Skulltula Chest',
-      'Bottom of the Well Right Bottom Fake Wall Chest',
-      'Bottom of the Well Fire Keese Chest',
-      'Bottom of the Well Like Like Chest',
-      'Bottom of the Well Map Chest',
-      'Bottom of the Well Underwater Front Chest',
-      'Bottom of the Well Invisible Chest',
-      'Bottom of the Well Lens of Truth Chest'
-  ],
+  'Hyrule Castle': ['Malon Egg', 'Hyrule Castle Fairy Reward', 'Impa at Castle'],
+  'Lon Lon Ranch': ['LLR Grotto Deku Scrub Deku Nuts', 'LLR Grotto Deku Scrub Bombs', 'LLR Grotto Deku Scrub Arrows', 'Talons Chickens', 'Lon Lon Tower Freestanding PoH', 'Song from Malon', 'LLR Stables Left Cow', 'LLR Stables Right Cow', 'LLR Tower Left Cow', 'LLR Tower Right Cow'],
+  'Lake Hylia': ['Underwater Bottle', 'Diving in the Lab', 'Child Fishing', 'LH Grotto Deku Scrub Deku Nuts', 'LH Grotto Deku Scrub Bombs', 'LH Grotto Deku Scrub Arrows'],
+  'Gerudo Valley': ['Gerudo Valley Waterfall Freestanding PoH', 'Gerudo Valley Crate Freestanding PoH', 'Valley Grotto Deku Scrub Red Potion', 'Valley Grotto Deku Scrub Green Potion', 'Gerudo Valley Cow'],
+  'Desert Colossus': ['Desert Colossus Fairy Reward', 'Sheik at Colossus', 'Desert Grotto Deku Scrub Red Potion', 'Desert Grotto Deku Scrub Green Potion', 'Colossus Freestanding PoH'],
+  'Haunted Wasteland': ['Haunted Wasteland Structure Chest'],
+  'Spirit Temple': ['Spirit Temple Child Left Chest', 'Spirit Temple Child Right Chest', 'Spirit Temple Map Chest', 'Spirit Temple Child Climb East Chest', 'Spirit Temple Child Climb North Chest', 'Spirit Temple Sun Block Room Chest', 'Silver Gauntlets Chest'],
+  'Kakariko Village': ['Anjus Chickens', '10 Gold Skulltulla Reward', '20 Gold Skulltulla Reward', '30 Gold Skulltulla Reward', '40 Gold Skulltulla Reward', '50 Gold Skulltulla Reward', '10 Gold Skulltula Reward', '20 Gold Skulltula Reward', '30 Gold Skulltula Reward', '40 Gold Skulltula Reward', '50 Gold Skulltula Reward', 'Impa House Freestanding PoH', 'Windmill Freestanding PoH', 'Man on Roof', 'Redead Grotto Chest', 'Kakariko Back Grotto Chest', 'Impas House Cow'],
+  'Bottom of the Well': ['Bottom of the Well Front Left Hidden Wall', 'Bottom of the Well Front Center Bombable', 'Bottom of the Well Right Bottom Hidden Wall', 'Bottom of the Well Center Large Chest', 'Bottom of the Well Center Small Chest', 'Bottom of the Well Back Left Bombable', 'Bottom of the Well Freestanding Key', 'Bottom of the Well Defeat Boss', 'Bottom of the Well Invisible Chest', 'Bottom of the Well Underwater Front Chest', 'Bottom of the Well Underwater Left Chest', 'Bottom of the Well Basement Chest', 'Bottom of the Well Locked Pits', 'Bottom of the Well Behind Right Grate', 'Bottom of the Well MQ Compass Chest', 'Bottom of the Well MQ Map Chest', 'Bottom of the Well MQ Lens Chest', 'Bottom of the Well MQ Dead Hand Freestanding Key', 'Bottom of the Well MQ East Inner Room Freestanding Key'],
   'Above Graveyard': [],
-  'Graveyard': [
-      "Song from Composers Grave",
-      'Graveyard Shield Grave Chest',
-      'Graveyard Heart Piece Grave Chest',
-      'Graveyard Composers Grave Chest',
-      'Graveyard Freestanding PoH',
-      'Graveyard Dampe Gravedigging Tour',
-  ],
-  'Death Mountain Trail': [
-      'DMT Freestanding PoH',
-      'DMT Chest',
-      'DMT Storms Grotto Chest',
-      'DMT Great Fairy Reward'
-  ],
-  'Death Mountain Crater': [
-      'DMC Wall Freestanding PoH',
-      'DMC Upper Grotto Chest',
-      'DMC Great Fairy Reward'
-  ],
-  'Goron City': [
-      'GC Darunias Joy',
-      'GC Pot Freestanding PoH',
-      'GC Rolling Goron as Child',
-      'GC Maze Right Chest',
-      'GC Maze Center Chest'
-  ],
-  'Dodongos Cavern': [
-      'Dodongos Cavern Map Chest',
-      'Dodongos Cavern Compass Chest',
-      'Dodongos Cavern Bomb Flower Platform Chest',
-      'Dodongos Cavern Bomb Bag Chest',
-      'Dodongos Cavern End of Bridge Chest',
-      'Dodongos Cavern Boss Room Chest',
-      'Dodongos Cavern King Dodongo Heart', 'King Dodongo'
-  ],
-  'Zora River': [
-      'ZR Magic Bean Salesman',
-      "ZR Frogs in the Rain",
-      "ZR Frogs Ocarina Game",
-      'ZR Open Grotto Chest',
-      'ZR Near Open Grotto Freestanding PoH',
-      'ZR Near Domain Freestanding PoH'
-  ],
-  'Zoras Domain': ['ZD Diving Minigame', 'ZD Chest'],
-  'Zoras Fountain': ['ZF Great Fairy Reward'],
-  'Jabu Jabus Belly': ['Jabu Jabus Belly Boomerang Chest',
-      'Jabu Jabus Belly Map Chest',
-      'Jabu Jabus Belly Compass Chest',
-      'Jabu Jabus Belly Barinade Heart',
-                       , 'Barinade'
-  ]
+  'Graveyard': ['Graveyard Freestanding PoH', 'Gravedigging Tour', 'Shield Grave Chest', 'Heart Piece Grave Chest', 'Composer Grave Chest', 'Song from Composer Grave'],
+  'Death Mountain Trail': ['Death Mountain Bombable Chest', 'DM Trail Freestanding PoH', 'Mountain Storms Grotto Chest', 'Mountain Summit Fairy Reward', 'DMT Grotto Cow'],
+  'Death Mountain Crater': ['Top of Crater Grotto Chest', 'DM Crater Wall Freestanding PoH', 'DMC Deku Scrub Bombs'],
+  'Goron City': ['Goron City Left Maze Chest', 'Goron City Right Maze Chest', 'Goron City Pot Freestanding PoH', 'Rolling Goron as Child', 'Darunias Joy'],
+  'Dodongos Cavern': ['DC Deku Scrub Deku Sticks', 'DC Deku Scrub Deku Shield', 'DC Deku Scrub Deku Seeds', 'DC Deku Scrub Deku Nuts', 'Dodongos Cavern Map Chest', 'Dodongos Cavern Compass Chest', 'Dodongos Cavern Bomb Flower Platform', 'Dodongos Cavern Bomb Bag Chest', 'Dodongos Cavern End of Bridge Chest', 'Chest Above King Dodongo', 'Dodongos Cavern MQ Map Chest', 'Dodongos Cavern MQ Compass Chest', 'Dodongos Cavern MQ Larva Room Chest', 'Dodongos Cavern MQ Torch Puzzle Room Chest', 'DC MQ Deku Scrub Deku Sticks', 'DC MQ Deku Scrub Deku Seeds', 'DC MQ Deku Scrub Deku Shield', 'DC MQ Deku Scrub Red Potion', 'Dodongos Cavern MQ Bomb Bag Chest', 'Dodongos Cavern MQ Under Grave Chest', 'King Dodongo Heart', 'King Dodongo'],
+  'Zora River': ['Zora River Lower Freestanding PoH', 'Zora River Upper Freestanding PoH', 'Frog Ocarina Game', 'Frogs in the Rain', 'Zora River Plateau Open Grotto Chest', 'ZR Grotto Deku Scrub Red Potion', 'ZR Grotto Deku Scrub Green Potion'],
+  'Zoras Domain': ['Diving Minigame', 'Zoras Domain Torch Run', 'King Zora Moves'],
+  'Zoras Fountain': ['Zoras Fountain Fairy Reward'],
+  'Jabu Jabus Belly': ['Jabu Deku Scrub Deku Nuts', 'Boomerang Chest', 'Jabu Jabus Belly Map Chest', 'Jabu Jabus Belly Compass Chest', 'Jabu Jabus Belly MQ Map Chest', 'Jabu Jabus Belly MQ Entry Side Chest', 'Jabu Jabus Belly MQ Second Room Lower Chest', 'Jabu Jabus Belly MQ Second Room Upper Chest', 'Jabu Jabus Belly MQ Compass Chest', 'Jabu Jabus Belly MQ Basement South Chest', 'Jabu Jabus Belly MQ Basement North Chest', 'Jabu Jabus Belly MQ Boomerang Room Small Chest', 'MQ Boomerang Chest', 'Jabu Jabus Belly MQ Falling Like Like Room Chest', 'Jabu Jabus Belly MQ Cow', 'Jabu Jabus Belly MQ Near Boss Chest', 'Barinade Heart', 'Barinade'],
 };
 
 var skulltulasByRegionChild = {
@@ -836,12 +712,11 @@ var skulltulasByRegionChild = {
 }
 
 var utilityByRegionChild = {
-  'Kakariko Village': ['Turn in Keaton Mask'],
+  'Kakariko Village': ['Show Letter to Guard', 'Turn in Keaton Mask'],
   'Market': ['Buy Keaton Mask', 'Buy Skull Mask'],
   'Spirit Temple': ['Unlock First Door'],
 }
 var entrancesByRegionChild = {
-  'LW Bridge From Forest': ['Kokiri Forest', 'Hyrule Field'],
   'Kokiri Forest': ['Deku Tree', 'Lost Woods', 'Hyrule Field'],
   'Deku Tree': ['Kokiri Forest'],
   'Lost Woods': ['Kokiri Forest', 'Goron City', 'Zora River', 'Sacred Forest Meadow'],
@@ -878,8 +753,10 @@ var gossipStonesByRegionChild = {
     'Gerudo Valley': ['Waterfall'],
     'Goron City': ['Maze', 'Medigoron'],
     'Above Graveyard': ['Shadow Temple'],
-    'Hyrule Castle': ['Malon', 'Rock Wall'],
-    'Kokiri Forest': ['Deku Tree Left', 'Deku Tree Right'],
+    'Hyrule Castle': ['Malon', 'Rock Wall', 'Storms Grotto'],
+    'Hyrule Field': ['Hammer Grotto'],
+    'Kakariko Village': ['Potion Grotto'],
+    'Kokiri Forest': ['Deku Tree Left', 'Deku Tree Right', 'Storms'],
     'Lake Hylia': ['Lab', 'Southeast Corner', 'Southwest Corner'],
     'Lost Woods': ['Bridge'],
     'Sacred Forest Meadow': ['Maze Lower', 'Maze Upper', 'Saria'],
@@ -890,36 +767,37 @@ var gossipStonesByRegionChild = {
 };
 
 var locationsByRegionAdult = {
-  "Kokiri Forest": ["KF Midos Top Left Chest", "KF Midos Top Right Chest", "KF Midos Bottom Left Chest", "KF Midos Bottom Right Chest", "KF Storms Grotto Chest"],
-  "Lost Woods": ["LW Near Shortcuts Grotto Chest", "LW Deku Scrub Grotto Front"],
-  "Sacred Forest Meadow": ["SFM Wolfos Grotto Chest", "Sheik in Forest"],
-  "Forest Temple": ["Forest Temple First Room Chest", "Forest Temple First Stalfos Chest", "Forest Temple Raised Island Courtyard Chest", "Forest Temple Map Chest", "Forest Temple Well Chest", "Forest Temple Eye Switch Chest", "Forest Temple Boss Key Chest", "Forest Temple Floormaster Chest", "Forest Temple Red Poe Chest", "Forest Temple Bow Chest", "Forest Temple Blue Poe Chest", "Forest Temple Falling Ceiling Room Chest", "Forest Temple Basement Chest", "Forest Temple Phantom Ganon Heart", "Phantom Ganon"],
-  "Hyrule Field": ["HF Near Market Grotto Chest", "HF Tektite Grotto Freestanding PoH", "HF Southeast Grotto Chest", "HF Open Grotto Chest", "HF Deku Scrub Grotto"],
-  "Market": ["Market 10 Big Poes"],
-  "Temple of Time": ["Sheik at Temple", "Zelda", "Check Pedestal (Medallions)"],
-  "Lon Lon Ranch": [],
-  "Lake Hylia": ["LH Adult Fishing", "LH Lab Dive", "LH Freestanding PoH", "LH Sun"],
-  "Water Temple": ["Water Temple Longshot Chest", "Water Temple Compass Chest", "Water Temple Map Chest", "Water Temple Cracked Wall Chest", "Water Temple Torches Chest", "Water Temple Boss Key Chest", "Water Temple Central Pillar Chest", "Water Temple Central Bow Target Chest", "Water Temple River Chest", "Water Temple Dragon Chest", "Water Temple Morpha Heart", "Morpha"],
-  "Gerudo Valley": ["GV Crate Freestanding PoH", "GV Waterfall Freestanding PoH", "GV Chest"],
-  "Gerudo Fortress": ["GF Chest", "GF HBA 1000 Points", "GF HBA 1500 Points"],
-  "Gerudo Training Grounds": ["Gerudo Training Grounds Underwater Silver Rupee Chest", "Gerudo Training Grounds Lobby Left Chest", "Gerudo Training Grounds Lobby Right Chest", "Gerudo Training Grounds Stalfos Chest", "Gerudo Training Grounds Before Heavy Block Chest", "Gerudo Training Grounds Heavy Block First Chest", "Gerudo Training Grounds Heavy Block Second Chest", "Gerudo Training Grounds Heavy Block Third Chest", "Gerudo Training Grounds Heavy Block Fourth Chest", "Gerudo Training Grounds Eye Statue Chest", "Gerudo Training Grounds Near Scarecrow Chest", "Gerudo Training Grounds Hammer Room Clear Chest", "Gerudo Training Grounds Hammer Room Switch Chest", "Gerudo Training Grounds Freestanding Key", "Gerudo Training Grounds Maze Right Central Chest", "Gerudo Training Grounds Maze Right Side Chest", 'Gerudo Training Grounds Underwater Silver Rupee Chest"', "Gerudo Training Grounds Beamos Chest", "Gerudo Training Grounds Hidden Ceiling Chest", "Gerudo Training Grounds Maze Path First Chest", "Gerudo Training Grounds Maze Path Second Chest", "Gerudo Training Grounds Maze Path Third Chest", "Gerudo Training Grounds Maze Path Final Chest"],
-  "Haunted Wasteland": ["Wasteland Chest"],
-  "Desert Colossus": ["Colossus Freestanding PoH", "Colossus Fairy Reward", "Sheik at Colossus"],
-  "Spirit Temple": ["Spirit Temple Child Climb North Chest", "Spirit Temple Child Climb East Chest", "Spirit Temple Map Chest", "Spirit Temple Sun Block Room Chest", "Spirit Temple Silver Gauntlets Chest", "Spirit Temple Compass Chest", "Spirit Temple Early Adult Right Chest", "Spirit Temple First Mirror Left Chest", "Spirit Temple First Mirror Right Chest", "Spirit Temple Statue Room Northeast Chest", "Spirit Temple Statue Room Hand Chest", "Spirit Temple Near Four Armos Chest", "Spirit Temple Hallway Right Invisible Chest", "Spirit Temple Hallway Left Invisible Chest", "Spirit Temple Mirror Shield Chest", "Spirit Temple Boss Key Chest", "Spirit Temple Topmost Chest", "Spirit Temple Twinrova Heart", "Twinrova"],
-  "Kakariko Village": ["Song from Windmill", "Sheik in Kakariko", "Kak Anju as Adult", "Kak Impas House Freestanding PoH", "Kak Windmill Freestanding PoH", "Kak Man on Roof", "Kak Open Grotto Chest", "Kak Redead Grotto Chest", "Kak Shooting Gallery Reward", "Kak 10 Gold Skulltula Reward", "Kak 20 Gold Skulltula Reward", "Kak 30 Gold Skulltula Reward", "Kak 40 Gold Skulltula Reward", "Kak 50 Gold Skulltula Reward"],
-  "Graveyard": ["Song from Composers Grave", "Graveyard Shield Grave Chest", "Graveyard Heart Piece Grave Chest", "Graveyard Composers Grave Chest", "Graveyard Freestanding PoH", "Graveyard Hookshot Chest", "Graveyard Dampe Race Freestanding PoH"],
-  "Shadow Temple": ["Shadow Temple vanilla", "Shadow Temple Map Chest", "Shadow Temple Hover Boots Chest", "Shadow Temple Compass Chest", "Shadow Temple Early Silver Rupee Chest", "Shadow Temple Invisible Blades Visible Chest", "Shadow Temple Invisible Blades Invisible Chest", "Shadow Temple Falling Spikes Lower Chest", "Shadow Temple Falling Spikes Upper Chest", "Shadow Temple Falling Spikes Switch Chest", "Shadow Temple Invisible Spikes Chest", "Shadow Temple Freestanding Key", "Shadow Temple Wind Hint Chest", "Shadow Temple After Wind Enemy Chest", "Shadow Temple After Wind Hidden Chest", "Shadow Temple Spike Walls Left Chest", "Shadow Temple Boss Key Chest", "Shadow Temple Invisible Floormaster Chest", "Shadow Temple Bongo Bongo Heart", "Bongo Bongo"],
-  "Death Mountain Trail": ["DMT Freestanding PoH", "DMT Chest", "DMT Storms Grotto Chest", "DMT Great Fairy Reward", "DMT Biggoron"],
-  "Death Mountain Crater": ["DMC Volcano Freestanding PoH", "DMC Wall Freestanding PoH", "DMC Upper Grotto Chest", "DMC Great Fairy Reward", "Sheik in Crater"],
-  "Fire Temple": ["Fire Temple Near Boss Chest", "Fire Temple Flare Dancer Chest", "Fire Temple Boss Key Chest", "Fire Temple Big Lava Room Lower Open Door Chest", "Fire Temple Big Lava Room Blocked Door Chest", "Fire Temple Boulder Maze Lower Chest", "Fire Temple Boulder Maze Side Room Chest", "Fire Temple Map Chest", "Fire Temple Boulder Maze Shortcut Chest", "Fire Temple Boulder Maze Upper Chest", "Fire Temple Scarecrow Chest", "Fire Temple Compass Chest", "Fire Temple Megaton Hammer Chest", "Fire Temple Highest Goron Chest", "Fire Temple Volvagia Heart", "Volvagia"],
-  "Goron City": ["GC Rolling Goron as Adult", "GC Maze Left Chest", "GC Maze Right Chest", "GC Maze Center Chest"],
-  "Dodongos Cavern": ["Dodongos Cavern Map Chest", "Dodongos Cavern Compass Chest", "Dodongos Cavern Bomb Flower Platform Chest", "Dodongos Cavern Bomb Bag Chest", "Dodongos Cavern End of Bridge Chest", "Dodongos Cavern Boss Room Chest", "Dodongos Cavern King Dodongo Heart", "King Dodongo"],
-  "Zora River": ["ZR Open Grotto Chest", "ZR Near Open Grotto Freestanding PoH", "ZR Near Domain Freestanding PoH"],
-  "Zoras Domain": ["ZD King Zora Thawed"],
-  "Zoras Fountain": ["ZF Iceberg Freestanding PoH", "ZF Bottom Freestanding PoH", "ZF Great Fairy Reward"],
-  "Ice Cavern": ["Ice Cavern Map Chest", "Ice Cavern Compass Chest", "Ice Cavern Freestanding PoH", "Ice Cavern Iron Boots Chest", "Sheik in Ice Cavern"],
-  "Outside Ganons Castle": ["OGC Great Fairy Reward"],
-  "Ganons Castle": ["Ganons Castle Forest Trial Chest", "Ganons Castle Water Trial Left Chest", "Ganons Castle Water Trial Right Chest", "Ganons Castle Shadow Trial Front Chest", "Ganons Castle Shadow Trial Golden Gauntlets Chest", "Ganons Castle Light Trial First Left Chest", "Ganons Castle Light Trial Second Left Chest", "Ganons Castle Light Trial Third Left Chest", "Ganons Castle Light Trial First Right Chest", "Ganons Castle Light Trial Second Right Chest", "Ganons Castle Light Trial Third Right Chest", "Ganons Castle Light Trial Invisible Enemies Chest", "Ganons Castle Light Trial Lullaby Chest", "Ganons Castle Spirit Trial Crystal Switch Chest", "Ganons Castle Spirit Trial Invisible Chest", "Ganons Tower Boss Key Chest"]
+  'Kokiri Forest': ['Kokiri Forest Storms Grotto Chest', 'Links House Cow'],
+  'Lost Woods': ['LW Deku Scrub Deku Nuts', 'LW Deku Scrub Deku Sticks', 'LW Grotto Deku Scrub Arrows', 'Lost Woods Generic Grotto Chest', 'Deku Salesman Lost Woods Grotto', 'LW Grotto Deku Scrub Deku Nut Upgrade'],
+  'Sacred Forest Meadow': ['Wolfos Grotto Chest', 'Sheik Forest Song', 'SFM Grotto Deku Scrub Red Potion', 'SFM Grotto Deku Scrub Green Potion'],
+  'Forest Temple': ['Forest Temple First Chest', 'Forest Temple Chest Behind Lobby', 'Forest Temple Outside Hookshot Chest', 'Forest Temple Map Chest', 'Forest Temple Well Chest', 'Forest Temple Block Push Chest', 'Forest Temple Floormaster Chest', 'Forest Temple Boss Key Chest', 'Forest Temple Red Poe Chest', 'Forest Temple Bow Chest',  'Forest Temple Blue Poe Chest', 'Forest Temple Falling Room Chest', 'Forest Temple Near Boss Chest', 'Forest Temple MQ First Chest', 'Forest Temple MQ Chest Behind Lobby', 'Forest Temple MQ Boss Key Chest', 'Forest Temple MQ Redead Chest', 'Forest Temple MQ Well Chest', 'Forest Temple MQ NE Outdoors Upper Chest', 'Forest Temple MQ NE Outdoors Lower Chest', 'Forest Temple MQ Bow Chest', 'Forest Temple MQ Map Chest', 'Forest Temple MQ Compass Chest', 'Forest Temple MQ Falling Room Chest', 'Forest Temple MQ Near Boss Chest', 'Phantom Ganon Heart', 'Phantom Ganon'],
+  'Hyrule Field': ['Remote Southern Grotto Chest', 'Field Near Lake Outside Fence Grotto Chest', 'Deku Salesman Hyrule Field Grotto', 'HF Grotto Deku Scrub Piece of Heart', 'Field West Castle Town Grotto Chest', 'Tektite Grotto Freestanding PoH', 'HF Grotto Cow'],
+  'Market': ['10 Big Poes'],
+  'Temple of Time': ['Sheik at Temple', 'Zelda', 'Check Pedestal (Medallions)'],
+  'Lon Lon Ranch': ['LLR Stables Left Cow', 'LLR Stables Right Cow', 'LLR Tower Left Cow', 'LLR Tower Right Cow'],
+  'Lake Hylia': ['Lake Hylia Sun', 'Lake Hylia Freestanding PoH', 'Diving in the Lab', 'Adult Fishing', 'LH Grotto Deku Scrub Deku Nuts', 'LH Grotto Deku Scrub Bombs', 'LH Grotto Deku Scrub Arrows'],
+  'Water Temple': ['Water Temple Map Chest', 'Water Temple Compass Chest', 'Water Temple Torches Chest', 'Water Temple Dragon Chest', 'Water Temple Central Bow Target Chest', 'Water Temple Boss Key Chest', 'Morpha Heart', 'Water Temple Central Pillar Chest', 'Water Temple Cracked Wall Chest', 'Water Temple Dark Link Chest', 'Water Temple River Chest', 'Water Temple MQ Map Chest', 'Water Temple MQ Central Pillar Chest', 'Water Temple MQ Compass Chest', 'Water Temple MQ Longshot Chest', 'Water Temple MQ Boss Key Chest', 'Water Temple MQ Freestanding Key', 'Morpha'],
+  'Gerudo Valley': ['Gerudo Valley Waterfall Freestanding PoH', 'Gerudo Valley Crate Freestanding PoH', 'Gerudo Valley Hammer Rocks Chest', 'Valley Grotto Deku Scrub Red Potion', 'Valley Grotto Deku Scrub Green Potion'],
+  'Gerudo Fortress': ['Gerudo Fortress North F1 Carpenter', 'Gerudo Fortress North F2 Carpenter', 'Gerudo Fortress South F1 Carpenter', 'Gerudo Fortress South F2 Carpenter', 'Gerudo Fortress Membership Card', 'Gerudo Fortress Rooftop Chest', 'Horseback Archery 1000 Points', 'Horseback Archery 1500 Points'],
+  'Gerudo Training Ground': ['Gerudo Training Ground Lobby Left Chest', 'Gerudo Training Ground Lobby Right Chest', 'Gerudo Training Ground Stalfos Chest', 'Gerudo Training Ground Before Heavy Block Chest', 'Gerudo Training Ground Heavy Block First Chest', 'Gerudo Training Ground Heavy Block Second Chest', 'Gerudo Training Ground Heavy Block Third Chest', 'Gerudo Training Ground Heavy Block Fourth Chest',  'Gerudo Training Ground Eye Statue Chest', 'Gerudo Training Ground Near Scarecrow Chest', 'Gerudo Training Ground Hammer Room Clear Chest', 'Gerudo Training Ground Hammer Room Switch Chest', 'Gerudo Training Ground Underwater Silver Rupee Chest', 'Gerudo Training Ground Maze Right Central Chest', 'Gerudo Training Ground Maze Right Side Chest', 'Gerudo Training Ground Freestanding Key', 'Gerudo Training Ground Beamos Chest', 'Gerudo Training Ground Hidden Ceiling Chest', 'Gerudo Training Ground Maze Path First Chest', 'Gerudo Training Ground Maze Path Second Chest', 'Gerudo Training Ground Maze Path Third Chest', 'Gerudo Training Ground Maze Path Final Chest', 'Gerudo Training Ground MQ Lobby Left Chest', 'Gerudo Training Ground MQ Lobby Right Chest', 'Gerudo Training Ground MQ Hidden Ceiling Chest', 'Gerudo Training Ground MQ Maze Path First Chest', 'Gerudo Training Ground MQ Maze Path Second Chest', 'Gerudo Training Ground MQ Maze Path Third Chest', 'Gerudo Training Ground MQ Dinolfos Chest', 'Gerudo Training Ground MQ Underwater Silver Rupee Chest', 'Gerudo Training Ground MQ First Iron Knuckle Chest', 'Gerudo Training Ground MQ Before Heavy Block Chest', 'Gerudo Training Ground MQ Heavy Block Chest', 'Gerudo Training Ground MQ Eye Statue Chest', 'Gerudo Training Ground MQ Second Iron Knuckle Chest', 'Gerudo Training Ground MQ Flame Circle Chest', 'Gerudo Training Ground MQ Maze Right Central Chest', 'Gerudo Training Ground MQ Maze Right Side Chest', 'Gerudo Training Ground MQ Ice Arrows Chest'],
+  'Haunted Wasteland': ['Haunted Wasteland Structure Chest'],
+  'Desert Colossus': ['Colossus Freestanding PoH', 'Desert Colossus Fairy Reward', 'Sheik at Colossus', 'Desert Grotto Deku Scrub Red Potion', 'Desert Grotto Deku Scrub Green Potion'],
+  'Spirit Temple': ['Spirit Temple Compass Chest', 'Spirit Temple Early Adult Right Chest', 'Spirit Temple First Mirror Right Chest', 'Spirit Temple First Mirror Left Chest', 'Spirit Temple Map Chest', 'Spirit Temple Child Climb East Chest', 'Spirit Temple Child Climb North Chest', 'Spirit Temple Sun Block Room Chest', 'Spirit Temple Statue Hand Chest', 'Spirit Temple NE Main Room Chest', 'Silver Gauntlets Chest', 'Mirror Shield Chest', 'Spirit Temple Near Four Armos Chest', 'Spirit Temple Hallway Left Invisible Chest', 'Spirit Temple Hallway Right Invisible Chest', 'Spirit Temple Boss Key Chest', 'Spirit Temple Topmost Chest', 'Spirit Temple MQ Entrance Front Left Chest', 'Spirit Temple MQ Entrance Back Left Chest', 'Spirit Temple MQ Entrance Back Right Chest', 'Spirit Temple MQ Child Center Chest', 'Spirit Temple MQ Child Left Chest', 'Spirit Temple MQ Map Chest', 'Spirit Temple MQ Silver Block Hallway Chest', 'Spirit Temple MQ Child Climb South Chest', 'Spirit Temple MQ Lower NE Main Room Chest', 'Spirit Temple MQ Upper NE Main Room Chest', 'Spirit Temple MQ Beamos Room Chest', 'Spirit Temple MQ Boss Key Chest', 'Spirit Temple MQ Child Climb North Chest', 'Spirit Temple MQ Compass Chest', 'Spirit Temple MQ Sun Block Room Chest', 'Spirit Temple MQ Lower Adult Left Chest', 'Spirit Temple MQ Lower Adult Right Chest', 'Spirit Temple MQ Entrance Front Right Chest', 'Spirit Temple MQ Mirror Puzzle Invisible Chest', 'Twinrova Heart', 'Twinrova'],
+  'Kakariko Village': ['Anju as Adult', 'Man on Roof', '10 Gold Skulltulla Reward', '20 Gold Skulltulla Reward', '30 Gold Skulltulla Reward', '40 Gold Skulltulla Reward', '50 Gold Skulltulla Reward', '10 Gold Skulltula Reward', '20 Gold Skulltula Reward', '30 Gold Skulltula Reward', '40 Gold Skulltula Reward', '50 Gold Skulltula Reward', 'Impa House Freestanding PoH', 'Windmill Freestanding PoH', 'Adult Shooting Gallery', 'Redead Grotto Chest', 'Kakariko Back Grotto Chest', 'Sheik in Kakariko', 'Song at Windmill', 'Impas House Cow'],
+  'Graveyard': ['Graveyard Freestanding PoH', 'Shield Grave Chest', 'Heart Piece Grave Chest', 'Composer Grave Chest', 'Hookshot Chest', 'Dampe Race Freestanding PoH', 'Song from Composer Grave'],
+  'Above Graveyard': [],
+  'Shadow Temple': ['Shadow Temple Map Chest', 'Shadow Temple Hover Boots Chest', 'Shadow Temple Compass Chest', 'Shadow Temple Early Silver Rupee Chest', 'Shadow Temple Invisible Blades Visible Chest', 'Shadow Temple Invisible Blades Invisible Chest', 'Shadow Temple Falling Spikes Lower Chest', 'Shadow Temple Falling Spikes Upper Chest', 'Shadow Temple Falling Spikes Switch Chest', 'Shadow Temple Invisible Spikes Chest', 'Shadow Temple Freestanding Key', 'Shadow Temple Wind Hint Chest', 'Shadow Temple After Wind Enemy Chest', 'Shadow Temple After Wind Hidden Chest', 'Shadow Temple Spike Walls Left Chest', 'Shadow Temple Boss Key Chest', 'Shadow Temple Hidden Floormaster Chest', 'Shadow Temple MQ Compass Chest', 'Shadow Temple MQ Hover Boots Chest', 'Shadow Temple MQ Map Chest', 'Shadow Temple MQ Early Gibdos Chest', 'Shadow Temple MQ Near Ship Invisible Chest', 'Shadow Temple MQ Invisible Blades Visible Chest', 'Shadow Temple MQ Invisible Blades Invisible Chest', 'Shadow Temple MQ Beamos Silver Rupees Chest', 'Shadow Temple MQ Falling Spikes Lower Chest', 'Shadow Temple MQ Falling Spikes Upper Chest', 'Shadow Temple MQ Falling Spikes Switch Chest', 'Shadow Temple MQ Invisible Spikes Chest', 'Shadow Temple MQ Stalfos Room Chest', 'Shadow Temple MQ Wind Hint Chest', 'Shadow Temple MQ After Wind Enemy Chest', 'Shadow Temple MQ After Wind Hidden Chest', 'Shadow Temple MQ Spike Walls Left Chest', 'Shadow Temple MQ Boss Key Chest', 'Shadow Temple MQ Bomb Flower Chest', 'Shadow Temple MQ Freestanding Key', 'Bongo Bongo Heart', 'Bongo Bongo'],
+  'Death Mountain Trail': ['Death Mountain Bombable Chest', 'DM Trail Freestanding PoH', 'Mountain Storms Grotto Chest', 'Mountain Summit Fairy Reward', 'Biggoron', 'DMT Grotto Cow'],
+  'Death Mountain Crater': ['Top of Crater Grotto Chest', 'DM Crater Wall Freestanding PoH', 'DM Crater Volcano Freestanding PoH', 'Crater Fairy Reward', 'Sheik in Crater', 'DMC Grotto Deku Scrub Deku Nuts', 'DMC Grotto Deku Scrub Bombs', 'DMC Grotto Deku Scrub Arrows'],
+  'Fire Temple': ['Fire Temple Chest Near Boss', 'Fire Temple Fire Dancer Chest', 'Fire Temple Boss Key Chest', 'Fire Temple Big Lava Room Bombable Chest', 'Fire Temple Big Lava Room Open Chest', 'Volvagia Heart', 'Volvagia', 'Fire Temple Boulder Maze Lower Chest', 'Fire Temple Boulder Maze Upper Chest', 'Fire Temple Boulder Maze Side Room', 'Fire Temple Boulder Maze Bombable Pit', 'Fire Temple Scarecrow Chest', 'Fire Temple Map Chest', 'Fire Temple Compass Chest', 'Fire Temple Highest Goron Chest', 'Fire Temple Megaton Hammer Chest', 'Fire Temple MQ Entrance Hallway Small Chest', 'Fire Temple MQ Chest Near Boss', 'Fire Temple MQ Megaton Hammer Chest', 'Fire Temple MQ Map Chest', 'Fire Temple MQ Boss Key Chest', 'Fire Temple MQ Big Lava Room Bombable Chest', 'Fire Temple MQ Maze Lower Chest', 'Fire Temple MQ Maze Side Room', 'Fire Temple MQ Maze Upper Chest', 'Fire Temple MQ Compass Chest', 'Fire Temple MQ Freestanding Key', 'Fire Temple MQ West Tower Top Chest'],
+  'Goron City': ['Goron City Leftmost Maze Chest', 'Goron City Left Maze Chest', 'Goron City Right Maze Chest', 'Link the Goron', 'Goron Grotto Deku Scrub Deku Nuts', 'Goron Grotto Deku Scrub Bombs', 'Goron Grotto Deku Scrub Arrows'],
+  'Dodongos Cavern': ['DC Deku Scrub Deku Sticks', 'DC Deku Scrub Deku Shield', 'DC Deku Scrub Deku Seeds', 'DC Deku Scrub Deku Nuts', 'Dodongos Cavern Map Chest', 'Dodongos Cavern Compass Chest', 'Dodongos Cavern Bomb Flower Platform', 'Dodongos Cavern Bomb Bag Chest', 'Dodongos Cavern End of Bridge Chest', 'Chest Above King Dodongo', 'King Dodongo Heart', 'King Dodongo'],
+  'Zora River': ['Zora River Lower Freestanding PoH', 'Zora River Upper Freestanding PoH', 'Zora River Plateau Open Grotto Chest', 'ZR Grotto Deku Scrub Red Potion', 'ZR Grotto Deku Scrub Green Potion'],
+  'Zoras Domain': ['King Zora Thawed'],
+  'Zoras Fountain': ['Zoras Fountain Iceberg Freestanding PoH', 'Zoras Fountain Bottom Freestanding PoH', 'Zoras Fountain Fairy Reward'],
+  'Ice Cavern': ['Ice Cavern Map Chest', 'Ice Cavern Compass Chest', 'Ice Cavern Iron Boots Chest', 'Ice Cavern Freestanding PoH', 'Ice Cavern MQ Compass Chest', 'Ice Cavern MQ Map Chest', 'Ice Cavern MQ Iron Boots Chest', 'Ice Cavern MQ Freestanding PoH', 'Sheik in Ice Cavern'],
+  'Outside Ganons Castle': ['Ganons Castle Fairy Reward'],
+  'Ganons Castle': ['GC Deku Scrub Bombs', 'GC Deku Scrub Arrows', 'GC Deku Scrub Red Potion', 'GC Deku Scrub Green Potion', 'Ganons Castle Forest Trial Chest', 'Ganons Castle Water Trial Left Chest', 'Ganons Castle Water Trial Right Chest', 'Ganons Castle Shadow Trial First Chest', 'Ganons Castle Shadow Trial Second Chest', 'Ganons Castle Spirit Trial First Chest', 'Ganons Castle Spirit Trial Second Chest', 'Ganons Castle Light Trial First Left Chest', 'Ganons Castle Light Trial Second Left Chest', 'Ganons Castle Light Trial Third Left Chest', 'Ganons Castle Light Trial First Right Chest', 'Ganons Castle Light Trial Second Right Chest', 'Ganons Castle Light Trial Third Right Chest', 'Ganons Castle Light Trail Invisible Enemies Chest', 'Ganons Castle Light Trial Invisible Enemies Chest', 'Ganons Castle Light Trial Lullaby Chest', 'Ganons Tower Boss Key Chest', 'GC MQ Deku Scrub Bombs', 'GC MQ Deku Scrub Arrows', 'GC MQ Deku Scrub Red Potion', 'GC MQ Deku Scrub Green Potion', 'GC MQ Deku Scrub Deku Nuts', 'Ganons Castle MQ Forest Trial First Chest', 'Ganons Castle MQ Forest Trial Second Chest', 'Ganons Castle MQ Forest Trial Freestanding Key', 'Ganons Castle MQ Water Trial Chest', 'Ganons Castle MQ Shadow Trial First Chest', 'Ganons Castle MQ Shadow Trial Second Chest', 'Ganons Castle MQ Spirit Trial First Chest', 'Ganons Castle MQ Spirit Trial Second Chest', 'Ganons Castle MQ Spirit Trial Sun Front Left Chest', 'Ganons Castle MQ Spirit Trial Sun Back Left Chest', 'Ganons Castle MQ Spirit Trial Golden Gauntlets Chest', 'Ganons Castle MQ Spirit Trial Sun Back Right Chest', 'Ganons Castle MQ Light Trial Lullaby Chest', 'Light Arrows Hint', 'Ganon']
 };
 
 var skulltulasByRegionAdult = {
@@ -935,7 +813,7 @@ var skulltulasByRegionAdult = {
   'Water Temple': ['GS Water Temple South Basement', 'GS Water Temple Serpent River', 'GS Water Temple Falling Platform Room', 'GS Water Temple Central Room', 'GS Water Temple Near Boss Key Chest'],
   'Gerudo Valley': ['GS Gerudo Valley Behind Tent', 'GS Gerudo Valley Pillar'],
   'Gerudo Fortress': ['GS Gerudo Fortress Archery Range', 'GS Gerudo Fortress Top Floor'],
-  'Gerudo Training Grounds': [],
+  'Gerudo Training Ground': [],
   'Haunted Wasteland': ['GS Wasteland Ruins'],
   'Desert Colossus': ['GS Desert Colossus Tree', 'GS Desert Colossus Hill'],
   'Spirit Temple': ['GS Spirit Temple Bomb for Light Room', 'GS Spirit Temple Hall to West Iron Knuckle', 'GS Spirit Temple Boulder Room', 'GS Spirit Temple Lobby'],
@@ -968,8 +846,8 @@ var entrancesByRegionAdult = {
   'Lake Hylia': ['Hyrule Field', 'Water Temple'],
   'Water Temple': ['Lake Hylia'],
   'Gerudo Valley': ['Hyrule Field', 'Lake Hylia', 'Gerudo Fortress'],
-  'Gerudo Fortress': ['Haunted Wasteland', 'Gerudo Valley', 'Gerudo Training Grounds'],
-  'Gerudo Training Grounds': ['Gerudo Fortress'],
+  'Gerudo Fortress': ['Haunted Wasteland', 'Gerudo Valley', 'Gerudo Training Ground'],
+  'Gerudo Training Ground': ['Gerudo Fortress'],
   'Haunted Wasteland': ['Gerudo Fortress', 'Desert Colossus'],
   'Desert Colossus': ['Spirit Temple', 'Haunted Wasteland'],
   'Spirit Temple': ['Desert Colossus'],
@@ -994,14 +872,16 @@ var utilityByRegionAdult = {};
 
 var gossipStonesByRegionAdult = {
     'Death Mountain Crater': ['Bombable Wall'],
-    'Death Mountain Trail': ['Biggoron', 'Storms Grotto'],
+    'Death Mountain Trail': ['Biggoron'],
     'Desert Colossus': ['Spirit Temple'],
     'Dodongos Cavern': ['Bombable Wall'],
     'Gerudo Valley': ['Waterfall'],
     'Goron City': ['Maze', 'Medigoron'],
     'Above Graveyard': ['Shadow Temple'],
-    'Hyrule Castle': ['Malon', 'Rock Wall'],
-    'Kokiri Forest': ['Deku Tree Left', 'Deku Tree Right'],
+    'Hyrule Castle': ['Malon', 'Rock Wall', 'Storms Grotto'],
+    'Hyrule Field': ['Hammer Grotto'],
+    'Kakariko Village': ['Potion Grotto'],
+    'Kokiri Forest': ['Deku Tree Left', 'Deku Tree Right', 'Storms'],
     'Lake Hylia': ['Lab', 'Southeast Corner', 'Southwest Corner'],
     'Lost Woods': ['Bridge'],
     'Sacred Forest Meadow': ['Maze Lower', 'Maze Upper', 'Saria'],
@@ -1011,42 +891,15 @@ var gossipStonesByRegionAdult = {
     'Zoras River': ['Plateau', 'Waterfall'],
 };
 
-// Need to add certain spawns to other maps for logical reasons, add a line saying where the spawn is so players can know the checks they can get?.
-var spawnsByRegion = {
-    "Kokiri Forest":                 ['Kokiri Forest', 'KF Midos House', 'KF Sarias House', 'KF House of Twins', 'KF Know It All House', 'KF Kokiri Shop', 'KF Links House'],
-    "LW Bridge From Forest":         ['LW Bridge From Forest', 'LW Bridge'],
-    "Lost Woods":                    ['Lost Woods', 'LW Beyond Mido', 'LW Forest Exit', 'Deku Theater'],
-    "Goron City":                    ['GC Woods Warp', 'GC Darunias Chamber', 'Goron City', 'GC Shop'],
-    "Zora River":                    ['Zora River', 'ZR Behind Waterfall', 'ZR Front'],
-    "Sacred Forest Meadow":          ['SFM Entryway', 'SFM Wolfos Grotto', 'SFM Fairy Grotto'],
-    "Hyrule Field":                  ['Hyrule Field'],
-    "Lake Hylia":                    ['Lake Hylia', 'LH Lab', 'LH Fishing Hole', 'LH Fishing Island'],
-    "Gerudo Valley":                 ['Gerudo Valley', 'GV Fortress Side'],
-    "Market":                        ['Market', 'Market Entrance', 'Market Mask Shop', 'Market Guard House', 'Market Bombchu Bowling', 'Market Potion Shop', 'Market Treasure Chest Game',
-                                     'Market Bombchu Shop', 'Market Man in Green House', 'Market Shooting Gallery', 'Market Bazaar'],
-    "Kakariko Village":              ['Kakariko Village', 'Kak Behind Gate', 'Kak Impas Ledge', 'Kak Potion Shop Front', 'Kak Potion Shop Back', 'Kak Carpenter Boss House',
-                                     'Kak House of Skulltula', 'Kak Impas House', 'Kak Impas House Back', 'Kak Odd Medicine Building', 'Kak Shooting Gallery', 'Kak Windmill', 
-                                     'Kak Bazaar', 'Kak Redead Grotto', 'Kak Backyard'],
-    "Lon Lon Ranch":                 ['Lon Lon Ranch', 'LLR Talons House', 'LLR Stables', 'LLR Tower'],
-    "Zoras Domain":                  ['Zoras Domain', 'ZD Behind King Zora', 'ZD Shop'],
-    "Gerudo Fortress":               ['Gerudo Fortress', 'GF Outside Gate', 'GV Carpenter Tent'],
-    "Haunted Wasteland":             ['Wasteland Near Fortress', 'Wasteland Near Colossus'],
-    "Desert Colossus":               ['Desert Colossus', 'Colossus Great Fairy Fountain'],
-    "Hyrule Castle":                 ['Castle Grounds', 'HC Great Fairy Fountain'],
-    "Temple of Time":                ['ToT Entrance', 'Temple of Time'],
-    "Graveyard":                     ['Graveyard', 'Graveyard Dampes House', 'Graveyard Royal Familys Tomb', 'Graveyard Dampes Grave', 'Graveyard Shield Grave', 'Graveyard Heart Piece Grave'],
-    "Death Mountain Trail":          ['Death Mountain', 'Death Mountain Summit', 'DMT Great Fairy Fountain'],
-    "Death Mountain Crater":         ['DMC Lower Local', 'DMC Lower Nearby', 'DMC Upper Local', 'DMC Upper Nearby', 'DMC Great Fairy Fountain'],
-    "Zoras Fountain":                ['Zoras Fountain', 'ZF Great Fairy Fountain'],
-    "Outside Ganons Castle":         ['OGC Great Fairy Fountain'],
-}
-
-function getSpawn(spawnFromLog) {
-  var region;
-  Object.keys(spawnsByRegion).forEach(function(item) { 
-    if(spawnsByRegion[item].includes(spawnFromLog)) {        
-      region = item;
-    } 
-  })
-  return region;
-}
+var masterQuestSkulls = {
+  'Deku Tree': ['GS Deku Tree MQ Lobby', 'GS Deku Tree MQ Compass Room', 'GS Deku Tree MQ Basement Ceiling', 'GS Deku Tree MQ Basement Back Room'], 
+  'Dodongos Cavern': ['GS Dodongo\'s Cavern MQ Song of Time Block Room', 'GS Dodongo\'s Cavern MQ Larva Room', 'GS Dodongo\'s Cavern MQ Lizalfos Room', 'GS Dodongo\'s Cavern MQ Scrub Room', 'GS Dodongo\'s Cavern MQ Back Area'], 
+  'Jabu Jabus Belly': ['GS Jabu Jabu MQ Boomerang Room', 'GS Jabu Jabu MQ Tailpasaran Room', 'GS Jabu Jabu MQ Invisible Enemies Room', 'GS Jabu Jabu MQ Near Boss'], 
+  'Forest Temple': ['GS Forest Temple MQ First Hallway', 'GS Forest Temple MQ Block Push Room', 'GS Forest Temple MQ Outdoor West', 'GS Forest Temple MQ Outdoor East', 'GS Forest Temple MQ Well'], 
+  'Bottom of the Well': ['GS Well MQ Basement', 'GS Well MQ West Inner Room', 'GS Well MQ Coffin Room'], 
+  'Fire Temple': ['GS Fire Temple MQ Big Lava Room', 'GS Fire Temple MQ East Tower Top', 'GS Fire Temple MQ Fire Wall Maze Side Room', 'GS Fire Temple MQ Fire Wall Maze Center', 'GS Fire Temple MQ Above Fire Wall Maze'], 
+  'Ice Cavern': ['GS Ice Cavern MQ Ice Block', 'GS Ice Cavern MQ Scarecrow', 'GS Ice Cavern MQ Red Ice'], 
+  'Water Temple': ['GS Water Temple MQ Lizalfos Hallway', 'GS Water Temple MQ Before Upper Water Switch', 'GS Water Temple MQ Serpent River', 'GS Water Temple MQ South Basement', 'GS Water Temple MQ North Basement'], 
+  'Shadow Temple': ['GS Shadow Temple MQ Crusher Room', 'GS Shadow Temple MQ Wind Hint Room', 'GS Shadow Temple MQ After Wind', 'GS Shadow Temple MQ After Ship', 'GS Shadow Temple MQ Near Boss'], 
+  'Spirit Temple': ['GS Spirit Temple MQ Iron Knuckle West', 'GS Spirit Temple MQ Iron Knuckle North', 'GS Spirit Temple MQ Sun Block Room', 'GS Spirit Temple MQ Lower Adult Left', 'GS Spirit Temple MQ Lower Adult Right'],
+};
