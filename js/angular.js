@@ -253,7 +253,7 @@ app.controller('simController', function($scope, $http) {
     'Spirit Temple':0,
     'Bottom of the Well':0,
     'Gerudo Fortress':0,
-    'Gerudo Training Grounds':0,
+    'Gerudo Training Ground':0,
     'Ganons Castle':0
   };
 };
@@ -515,7 +515,7 @@ $scope.hasBossKey = function(dungeon) {
     'Free',
     'Bottom of the Well', 
     'Gerudo Fortress', 
-    'Gerudo Training Grounds', 
+    'Gerudo Training Ground', 
     'Ganons Castle' 
   ];
   
@@ -555,7 +555,7 @@ $scope.hasBossKey = function(dungeon) {
     'Bottom of the Well': 'botw.png',
     'Ice Cavern': 'ice.png',
     'Gerudo Fortress': 'gf.png',
-    'Gerudo Training Grounds': 'gtg.png',
+    'Gerudo Training Ground': 'gtg.png',
     'Ganons Castle': 'gc.png'
   }
   
@@ -900,8 +900,7 @@ $scope.hasBossKey = function(dungeon) {
     reader.readAsText(event.target.files[0]);
   }
   
-  $scope.checkHint = function(stone) {
-    
+  $scope.checkHint = function(stone) {    
     var hint = '';
     if (stone == 'Generic Grotto') {
       hint = $scope.gossipHints[stone];
@@ -912,9 +911,10 @@ $scope.hasBossKey = function(dungeon) {
       $scope.checkedHints.push($scope.currentRegion + ' ' + stone);
     }
     
-    var hintInfo = parseHint(hint);
+    var hintInfo = parseHint(hint);    
     var hintLoc = hintInfo[0];
     var hintItem = hintInfo[1];
+    console.log(hintInfo)
     
     $scope.actions.push('Hint:' + stone + ':' + hintLoc);
     
