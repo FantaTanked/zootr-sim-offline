@@ -152,7 +152,7 @@ app.controller('simController', function($scope, $http) {
   $scope.itemgrid = [
     "Slingshot", "Bomb Bag", "Bow", "Fire Arrows", "Dins Fire", "Zeldas Lullaby", "Minuet of Forest", 
   	"Progressive Wallet", "Boomerang", "Progressive Hookshot", "Light Arrows", "Farores Wind", "Eponas Song", "Bolero of Fire", 
-  	"Bottle", "Lens of Truth", "Hammer", "Magic Meter", "Nayrus Love", "Sarias Song", "Serenade of Water", 
+  	"Bottle", "Lens of Truth", "Megaton Hammer", "Magic Meter", "Nayrus Love", "Sarias Song", "Serenade of Water", 
   	"Kokiri Sword", "Ocarina", "Iron Boots", "Progressive Strength Upgrade", "Stone of Agony", "Suns Song", "Requiem of Spirit", 
   	"Goron Tunic", "Zora Tunic", "Hover Boots", "Progressive Scale", "Child Trade", "Song of Time", "Nocturne of Shadow",
   	"Deku Shield", "Hylian Shield", "Mirror Shield", "Bombchus", "Adult Trade", "Song of Storms", "Prelude of Light", 
@@ -712,7 +712,7 @@ $scope.hasBossKey = function(dungeon) {
     'Eponas Song': ['epona.png', 'epona.png'],
     'Bolero of Fire': ['red_note.png', 'red_note.png'],
     'Lens of Truth': ['lens.png', 'lens.png'],
-    'Hammer': ['hammer.png', 'hammer.png'],
+    'Megaton Hammer': ['hammer.png', 'hammer.png'],
     'Magic Meter': ['magic.png', 'magic.png', 'magic2.png'],
     'Nayrus Love': ['nayru.png', 'nayru.png'],
     'Sarias Song': ['saria.png', 'saria.png'],
@@ -753,7 +753,7 @@ $scope.hasBossKey = function(dungeon) {
     'Boomerang': 'boomerang.png',
     'Lens of Truth': 'lens.png',
     'Beans': 'bean.png',
-    'Hammer': 'hammer.png',
+    'Megaton Hammer': 'hammer.png',
     'Bottled Fish': 'fish.png',
     'Bottled Milk': 'milk.png',
     'Mask of Truth': 'truth.png',
@@ -914,7 +914,6 @@ $scope.hasBossKey = function(dungeon) {
     var hintInfo = parseHint(hint);    
     var hintLoc = hintInfo[0];
     var hintItem = hintInfo[1];
-    console.log(hintInfo)
     
     $scope.actions.push('Hint:' + stone + ':' + hintLoc);
     
@@ -938,7 +937,6 @@ $scope.hasBossKey = function(dungeon) {
   $scope.playing = false;
 
   $scope.parseLog = function(logfile) {
-    console.log("parsing")
     if (typeof logfile == 'string') {
       logfile = JSON.parse(logfile);
     }
@@ -1075,7 +1073,6 @@ $scope.hasBossKey = function(dungeon) {
       $scope.updateForage();
     }
     catch(err) {
-      console.log(err);
       alert('Error parsing file! Please choose a randomizer spoiler log.');
     }
   };
@@ -1174,8 +1171,6 @@ $scope.hasBossKey = function(dungeon) {
   Promise.all(
     forageItems.map(x => localforage.getItem(x))
   ).then(function(results) {    
-    console.log(results)
-
     checked_child_spawn = results[33];
     child_spawn_text = checked_child_spawn == true ? results[32] : '???';
     child_spawn = results[31];
@@ -1276,7 +1271,7 @@ var shopItemImages = {
   'Gold Skulltula Token': 'token.png',
   'Goron Tunic': 'redtunic.png',
   'Green Potion': 'greenpotion.png',
-  'Hammer': 'hammer.png',
+  'Megaton Hammer': 'hammer.png',
   'Heart': 'recoveryheart.png',
   'Heart Container': 'heartcontainermodel.png',
   'Hover Boots': 'hoverboots.png',
