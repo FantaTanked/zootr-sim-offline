@@ -1,13 +1,5 @@
 var app = angular.module('zootrSim', []);
 
-var child_spawn;
-var child_spawn_text;
-var adult_spawn;
-var adult_spawn_text;
-
-var checked_child_spawn = false;
-var checked_adult_spawn = false;
-
 app.filter('removeSpaces', [function() {
   return function(string) {
     if (!angular.isString(string)) {
@@ -37,7 +29,7 @@ app.directive('customOnChange', function() {
 });
 
 app.controller('simController', function($scope, $http) {
-
+  
   $scope.darkModeOn = false;
   
   $scope.init = function() {
@@ -63,8 +55,8 @@ app.controller('simController', function($scope, $http) {
 
     $scope.windRegionAdult = "";
     
-    $scope.medallions = {};     
-
+    $scope.medallions = {};
+    
     $scope.currentRegion = 'Kokiri Forest';
     $scope.currentAge = 'Child';
     
@@ -112,14 +104,17 @@ app.controller('simController', function($scope, $http) {
   }
   
   $scope.init();
-
-  $scope.currentRegion = 'Goron City';
   
   $scope.getAvailableLocations = function() {
     return $scope.currentAge == 'Child' ? locationsByRegionChild[$scope.currentRegion] : locationsByRegionAdult[$scope.currentRegion];
   }
   
-  $scope.getAvailableSkulltulas = function() {   
+  $scope.getAvailableSkulltulas = function() {
+    if ($scope.currentRegion in masterQuestSkulls) {
+      if ($scope.currentSpoilerLog['dungeons'][$scope.currentRegion] == 'mq') {
+        return masterQuestSkulls[$scope.currentRegion];
+      }
+    }
     return $scope.currentAge == 'Child' ? skulltulasByRegionChild[$scope.currentRegion] : skulltulasByRegionAdult[$scope.currentRegion];
   }
   
@@ -253,7 +248,7 @@ app.controller('simController', function($scope, $http) {
     'Spirit Temple':0,
     'Bottom of the Well':0,
     'Gerudo Fortress':0,
-    'Gerudo Training Grounds':0,
+    'Gerudo Training Ground':0,
     'Ganons Castle':0
   };
 };
@@ -463,15 +458,11 @@ $scope.hasBossKey = function(dungeon) {
       $scope.currentAge = 'Child';
     }
     else if (entrance == 'Savewarp Child') {
-      $scope.currentRegion = getSpawn($scope['currentSpoilerLog']['entrances']['Child Spawn -> KF Links House']['region'] === undefined ? $scope['currentSpoilerLog']['entrances']['Child Spawn -> KF Links House'] : $scope['currentSpoilerLog']['entrances']['Child Spawn -> KF Links House']['region']);
-      $scope.child_spawn_text = $scope['currentSpoilerLog']['entrances']['Child Spawn -> KF Links House']['region'] === undefined ? $scope['currentSpoilerLog']['entrances']['Child Spawn -> KF Links House'] : $scope['currentSpoilerLog']['entrances']['Child Spawn -> KF Links House']['region'];
-      checked_child_spawn = true;
+      $scope.currentRegion = 'Kokiri Forest';
       $scope.route += 'Savewarp\n';
     }
     else if (entrance == 'Savewarp Adult') {
-      $scope.currentRegion = getSpawn($scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time']['region'] === undefined ? $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time'] : $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time']['region']);
-      $scope.adult_spawn_text = $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time']['region'] === undefined ? $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time'] : $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time']['region'];
-      checked_adult_spawn = true;
+      $scope.currentRegion = 'Temple of Time';
       $scope.route += 'Savewarp\n';
     }
     else if (entrance in songTargets) {
@@ -515,7 +506,7 @@ $scope.hasBossKey = function(dungeon) {
     'Free',
     'Bottom of the Well', 
     'Gerudo Fortress', 
-    'Gerudo Training Grounds', 
+    'Gerudo Training Ground', 
     'Ganons Castle' 
   ];
   
@@ -555,7 +546,7 @@ $scope.hasBossKey = function(dungeon) {
     'Bottom of the Well': 'botw.png',
     'Ice Cavern': 'ice.png',
     'Gerudo Fortress': 'gf.png',
-    'Gerudo Training Grounds': 'gtg.png',
+    'Gerudo Training Ground': 'gtg.png',
     'Ganons Castle': 'gc.png'
   }
   
@@ -865,7 +856,7 @@ $scope.hasBossKey = function(dungeon) {
       url: url
     }).then(function successCallback(response) {
       $scope.generating = false;
-      if (response.data[':version'] == ('6.0.0 Release')) {
+      if (response.data[':version'] == ('5.1.0 Release')) {
         $scope.currentSpoilerLog = response.data;
         $scope.parseLog(response.data);
       }
@@ -936,52 +927,22 @@ $scope.hasBossKey = function(dungeon) {
   };
   
   $scope.playing = false;
-
+  
   $scope.parseLog = function(logfile) {
-    console.log("parsing")
     if (typeof logfile == 'string') {
       logfile = JSON.parse(logfile);
     }
     $scope.currentSpoilerLog = logfile;
-    //if (logfile['settings']['entrance_shuffle'] != "off") {
-    //  alert("Error! Entrance shuffle is not supported.");
-    //  return;
-    //}
-    // else if (logfile['settings']['world_count'] != 1) {
-    //   alert("Error! Multiworld is not supported.");
-    //   return;
-    // }
-
-    child_spawn = logfile['entrances']['Child Spawn -> KF Links House']['region'];
-    adult_spawn = logfile['entrances']['Adult Spawn -> Temple of Time']['region'];   
-
-    var spawn_age = logfile['randomized_settings']['starting_age'];
-
-    checked_child_spawn = spawn_age == 'child' ? true : false;
-    checked_adult_spawn = spawn_age == 'adult' ? true : false;
-
+    if (logfile['settings']['entrance_shuffle'] != "off") {
+      alert("Error! Entrance shuffle is not supported.");
+      return;
+    }
+    else if (logfile['settings']['world_count'] != 1) {
+      alert("Error! Multiworld is not supported.");
+      return;
+    }
     try {
       $scope.currentSeed = logfile[':seed'];
-
-      var childRegion = logfile['entrances']['Child Spawn -> KF Links House']['region'] === undefined ? logfile['entrances']['Child Spawn -> KF Links House'] : logfile['entrances']['Child Spawn -> KF Links House']['region'];
-      var childRegionText = logfile['entrances']['Child Spawn -> KF Links House']['region'] === undefined ? logfile['entrances']['Child Spawn -> KF Links House'] : logfile['entrances']['Child Spawn -> KF Links House']['region'];
-
-      childRegion = getSpawn(childRegion)
-
-      $scope.child_spawn = childRegion;
-      child_spawn = childRegion;
-      $scope.child_spawn_text = logfile['randomized_settings']['starting_age'] == 'child' ? childRegionText : '???';      
-      child_spawn_text = childRegionText;
-
-      var adultRegion = logfile['entrances']['Adult Spawn -> Temple of Time']['region'] === undefined ? logfile['entrances']['Adult Spawn -> Temple of Time'] : logfile['entrances']['Adult Spawn -> Temple of Time']['region'];
-      var adultRegionText = logfile['entrances']['Adult Spawn -> Temple of Time']['region'] === undefined ? logfile['entrances']['Adult Spawn -> Temple of Time'] : logfile['entrances']['Adult Spawn -> Temple of Time']['region'];
-      adultRegion = getSpawn(adultRegion)
-
-      $scope.adult_spawn = adultRegion;
-      adult_spawn = adultRegion;
-      adult_spawn_text = adultRegionText;
-      //$scope.adult_spawn_text = logfile['randomized_settings']['starting_age'] == 'adult' ? logfile['entrances']['Adult Spawn -> Temple of Time']['region'] : '???';
-      $scope.adult_spawn_text = logfile['randomized_settings']['starting_age'] == 'adult' ? adultRegionText : '???';;
       var results = logfile['locations'];
       $scope.fsHash = logfile['file_hash'];
       $scope.isShopsanity = logfile['settings']['shopsanity'] != 'off';
@@ -1002,11 +963,10 @@ $scope.hasBossKey = function(dungeon) {
           shopItem['refill'] = refill;
           shopItem['bought'] = false;
           $scope.shopContents[shop].push(shopItem);
-        }        
+        }
         $scope.allLocations[loc] = item;
         $scope.itemCounts[item] = 0;
       }
-
       if (!('Kokiri Sword Chest' in $scope.allLocations)) {
         $scope.allLocations['Kokiri Sword Chest'] = 'Kokiri Sword';
       }
@@ -1029,24 +989,6 @@ $scope.hasBossKey = function(dungeon) {
         }
         $scope.gossipHints[region][stone] = logfile['gossip_stones'][hint]['text'].replace(/#/g,'');
       }
-
-      $scope.gossipHints['Kokiri Forest'] = $scope.gossipHints['KF'];
-      $scope.gossipHints['Lost Woods'] = $scope.gossipHints['LW'];
-      $scope.gossipHints['Sacred Forest Meadow'] = $scope.gossipHints['SFM'];
-      $scope.gossipHints['Death Mountain Crater'] = $scope.gossipHints['DMC'];
-      $scope.gossipHints['Death Mountain Trail'] = $scope.gossipHints['DMT'];
-      $scope.gossipHints['Goron City'] = $scope.gossipHints['GC'];
-      $scope.gossipHints['Gerudo Valley'] = $scope.gossipHints['GV'];
-      $scope.gossipHints['Hyrule Castle'] = $scope.gossipHints['HC'];
-      $scope.gossipHints['Hyrule Field'] = $scope.gossipHints['HF'];
-      $scope.gossipHints['Kakariko Village'] = $scope.gossipHints['Kak'];
-      $scope.gossipHints['Lake Hylia'] = $scope.gossipHints['LH'];
-      $scope.gossipHints['Temple of Time'] = $scope.gossipHints['ToT'];
-      $scope.gossipHints["Zoras Domain"] = $scope.gossipHints['ZD'];
-      $scope.gossipHints["Zoras Fountain"] = $scope.gossipHints['ZF'];
-      $scope.gossipHints["Zora River"] = $scope.gossipHints['ZR'];
-      $scope.gossipHints["Desert Colossus"] = $scope.gossipHints['Colossus']
-
       $scope.checkedLocations.push('Links Pocket');
       $scope.currentItemsAll.push($scope.allLocations['Links Pocket']);
       $scope.numChecksMade++;
@@ -1062,16 +1004,6 @@ $scope.hasBossKey = function(dungeon) {
       $scope.medallions['Spirit Temple'] = $scope.allLocations['Twinrova'];
       $scope.playing = true;
       $scope.route += '---- CHILD ' + $scope.currentChild + ' ----\n\n';
-
-      // $scope.currentRegion = $scope.adult_spawn_text = logfile['randomized_settings']['starting_age'] == 'child' 
-      // ? logfile['entrances']['Child Spawn -> KF Links House']['region'] 
-      // : logfile['entrances']['Adult Spawn -> Temple of Time']['region'];
-
-      $scope.currentAge = logfile['randomized_settings']['starting_age'] == 'child' ? 'Child' : 'Adult';
-
-      $scope.currentRegion = $scope.currentAge == 'Child' ? childRegion : adultRegion;
-      $scope.checkLocation('Song from Impa')
-
       $scope.updateForage();
     }
     catch(err) {
@@ -1150,44 +1082,24 @@ $scope.hasBossKey = function(dungeon) {
     $scope.updateForage();
   };
   
-  var forageItems = ['windRegionChild', 'windRegionAdult', 'peekedLocations', 'currentSeed', 'isShopsanity', 'shopContents', 'currentSpoilerLog', 'checkedHints', 'knownHints', 'allLocations', 'fsHash', 'checkedLocations', 'currentItemsAll', 'medallions', 'currentRegion', 'currentAge', 'knownMedallions', 'numChecksMade', 'totalChecks', 'gossipHints', 'itemCounts', 'usedChus', 'collectedWarps', 'finished', 'route', 'currentChild', 'currentAdult', 'playing', 'disableUndo', 'darkModeOn', 'actions', 'child_spawn', 'child_spawn_text', 'checked_child_spawn', 'adult_spawn', 'adult_spawn_text', 'checked_adult_spawn',]
+  var forageItems = ['windRegionChild', 'windRegionAdult', 'peekedLocations', 'currentSeed', 'isShopsanity', 'shopContents', 'currentSpoilerLog', 'checkedHints', 'knownHints', 'allLocations', 'fsHash', 'checkedLocations', 'currentItemsAll', 'medallions', 'currentRegion', 'currentAge', 'knownMedallions', 'numChecksMade', 'totalChecks', 'gossipHints', 'itemCounts', 'usedChus', 'collectedWarps', 'finished', 'route', 'currentChild', 'currentAdult', 'playing', 'disableUndo', 'darkModeOn', 'actions']
   
   $scope.updateForage = function() {
     forageItems.forEach(function(item) {
       localforage.setItem(item, $scope[item]);
-    });    
-
-    
-    var localChildSpawn = $scope['currentSpoilerLog']['entrances']['Child Spawn -> KF Links House']['region'] === undefined ? $scope['currentSpoilerLog']['entrances']['Child Spawn -> KF Links House'] : $scope['currentSpoilerLog']['entrances']['Child Spawn -> KF Links House']['region'];
-    var localAdultSpawn = $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time']['region'] === undefined ? $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time'] : $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time']['region'];
-
-    localforage.setItem('child_spawn', getSpawn(localChildSpawn));
-    localforage.setItem('child_spawn_text', localChildSpawn);
-    localforage.setItem('checked_child_spawn', checked_child_spawn);
-    localforage.setItem('adult_spawn', getSpawn(localAdultSpawn));
-    localforage.setItem('adult_spawn_text', localAdultSpawn);
-    localforage.setItem('checked_adult_spawn', checked_adult_spawn);
+    });
     localforage.setItem('playing', $scope.playing);
     localforage.setItem('fsHash', $scope.fsHash);
   }
   
+  
   Promise.all(
     forageItems.map(x => localforage.getItem(x))
-  ).then(function(results) {    
-    console.log(results)
-
-    checked_child_spawn = results[33];
-    child_spawn_text = checked_child_spawn == true ? results[32] : '???';
-    child_spawn = results[31];
-
-    checked_adult_spawn = results[36];
-    adult_spawn_text = checked_adult_spawn == true ? results[35] : '???';
-    adult_spawn = results[34];
-
+  ).then(function(results) {
     for (var i = 0; i < forageItems.length; i++) {
-      if (results[i] != null && results[i] != undefined) {   
+      if (results[i] != null && results[i] != undefined) {
         $scope[forageItems[i]] = results[i];
-      }   
+      }
     }
     $scope.$apply();
   });
