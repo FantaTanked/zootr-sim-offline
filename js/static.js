@@ -903,7 +903,7 @@ var locationsByRegionAdult = {
   "Forest Temple": ["Forest Temple First Room Chest", "Forest Temple First Stalfos Chest", "Forest Temple Raised Island Courtyard Chest", "Forest Temple Map Chest", "Forest Temple Well Chest", "Forest Temple Eye Switch Chest", "Forest Temple Boss Key Chest", "Forest Temple Floormaster Chest", "Forest Temple Red Poe Chest", "Forest Temple Bow Chest", "Forest Temple Blue Poe Chest", "Forest Temple Falling Ceiling Room Chest", "Forest Temple Basement Chest", "Forest Temple Phantom Ganon Heart", "Phantom Ganon"],
   "Hyrule Field": ["HF Near Market Grotto Chest", "HF Tektite Grotto Freestanding PoH", "HF Southeast Grotto Chest", "HF Open Grotto Chest", "HF Deku Scrub Grotto"],
   "Market": ["Market 10 Big Poes"],
-  "Temple of Time": ["Sheik at Temple", "Zelda", "Check Pedestal (Medallions)"],
+  "Temple of Time": ["Sheik at Temple", "Zelda", "Check Pedestal (Medallions)", "ToT Light Arrows Cutscene"],
   "Lon Lon Ranch": [],
   "Lake Hylia": ["LH Adult Fishing", "LH Lab Dive", "LH Freestanding PoH", "LH Sun"],
   "Water Temple": ["Water Temple Longshot Chest", "Water Temple Compass Chest", "Water Temple Map Chest", "Water Temple Cracked Wall Chest", "Water Temple Torches Chest", "Water Temple Boss Key Chest", "Water Temple Central Pillar Chest", "Water Temple Central Bow Target Chest", "Water Temple River Chest", "Water Temple Dragon Chest", "Water Temple Morpha Heart", "Morpha"],
