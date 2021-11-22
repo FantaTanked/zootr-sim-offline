@@ -933,7 +933,10 @@ $scope.hasBossKey = function(dungeon) {
       logfile = JSON.parse(logfile);
     }
     $scope.currentSpoilerLog = logfile;
-    if (logfile['settings']['entrance_shuffle'] != "off") {
+    if (logfile['settings']['shuffle_interior_entrances'] != "off" 
+        || logfile['settings']['shuffle_grotto_entrances'] != false
+        || logfile['settings']['shuffle_dungeon_entrances'] != false
+        || logfile['settings']['shuffle_overworld_entrances'] != false) {
       alert("Error! Entrance shuffle is not supported.");
       return;
     }
