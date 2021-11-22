@@ -8,6 +8,6 @@ If there's any checks / hints missing please also submit those as issues.
 
 to-do:
   
-Add CSMC peeking ability.
+Add CSMC peeking.
 
 Add logic so that you can only do checks which are possible for you to actually do with your current item set.
