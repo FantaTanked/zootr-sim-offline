@@ -690,7 +690,8 @@ var locationsByRegionChild = {
       'HF Tektite Grotto Freestanding PoH',
       'HF Southeast Grotto Chest',
       'HF Open Grotto Chest', 
-      "HF Deku Scrub Grotto"
+      "HF Deku Scrub Grotto",
+      'Song from Ocarina of Time'
   ],
   'Market': [
       'Market Shooting Gallery Reward',
