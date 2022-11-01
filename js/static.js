@@ -16,7 +16,7 @@ var importantItems = [
   'Ocarina of Time',
   'Ocarina',
   'Bottle',
-  'Bottle with Letter',
+  'Rutos Letter',
   'Bottle with Milk',
   'Bottle with Red Potion',
   'Bottle with Green Potion',
@@ -915,7 +915,7 @@ var locationsByRegionAdult = {
   "Desert Colossus": ["Colossus Freestanding PoH", "Colossus Great Fairy Reward", "Sheik at Colossus"],
   "Spirit Temple": ["Spirit Temple Child Climb North Chest", "Spirit Temple Child Climb East Chest", "Spirit Temple Map Chest", "Spirit Temple Sun Block Room Chest", "Spirit Temple Silver Gauntlets Chest", "Spirit Temple Compass Chest", "Spirit Temple Early Adult Right Chest", "Spirit Temple First Mirror Left Chest", "Spirit Temple First Mirror Right Chest", "Spirit Temple Statue Room Northeast Chest", "Spirit Temple Statue Room Hand Chest", "Spirit Temple Near Four Armos Chest", "Spirit Temple Hallway Right Invisible Chest", "Spirit Temple Hallway Left Invisible Chest", "Spirit Temple Mirror Shield Chest", "Spirit Temple Boss Key Chest", "Spirit Temple Topmost Chest", "Spirit Temple Twinrova Heart", "Twinrova"],
   "Kakariko Village": ["Song from Windmill", "Sheik in Kakariko", "Kak Anju as Adult", "Kak Impas House Freestanding PoH", "Kak Windmill Freestanding PoH", "Kak Man on Roof", "Kak Open Grotto Chest", "Kak Redead Grotto Chest", "Kak Shooting Gallery Reward", "Kak 10 Gold Skulltula Reward", "Kak 20 Gold Skulltula Reward", "Kak 30 Gold Skulltula Reward", "Kak 40 Gold Skulltula Reward", "Kak 50 Gold Skulltula Reward"],
-  "Graveyard": ["Song from Royal Familys Tomb", "Graveyard Shield Grave Chest", "Graveyard Heart Piece Grave Chest", "Graveyard Royal Familys Tomb Chest", "Graveyard Freestanding PoH", "Graveyard Hookshot Chest", "Graveyard Dampe Race Freestanding PoH"],
+  "Graveyard": ["Song from Royal Familys Tomb", "Graveyard Shield Grave Chest", "Graveyard Heart Piece Grave Chest", "Graveyard Royal Familys Tomb Chest", "Graveyard Freestanding PoH", "Graveyard Dampe Race Hookshot Chest", "Graveyard Dampe Race Freestanding PoH"],
   "Shadow Temple": ["Shadow Temple vanilla", "Shadow Temple Map Chest", "Shadow Temple Hover Boots Chest", "Shadow Temple Compass Chest", "Shadow Temple Early Silver Rupee Chest", "Shadow Temple Invisible Blades Visible Chest", "Shadow Temple Invisible Blades Invisible Chest", "Shadow Temple Falling Spikes Lower Chest", "Shadow Temple Falling Spikes Upper Chest", "Shadow Temple Falling Spikes Switch Chest", "Shadow Temple Invisible Spikes Chest", "Shadow Temple Freestanding Key", "Shadow Temple Wind Hint Chest", "Shadow Temple After Wind Enemy Chest", "Shadow Temple After Wind Hidden Chest", "Shadow Temple Spike Walls Left Chest", "Shadow Temple Boss Key Chest", "Shadow Temple Invisible Floormaster Chest", "Shadow Temple Bongo Bongo Heart", "Bongo Bongo"],
   "Death Mountain Trail": ["DMT Freestanding PoH", "DMT Chest", "DMT Storms Grotto Chest", "DMT Great Fairy Reward", "DMT Biggoron"],
   "Death Mountain Crater": ["DMC Volcano Freestanding PoH", "DMC Wall Freestanding PoH", "DMC Upper Grotto Chest", "DMC Great Fairy Reward", "Sheik in Crater"],
@@ -927,7 +927,7 @@ var locationsByRegionAdult = {
   "Zoras Fountain": ["ZF Iceberg Freestanding PoH", "ZF Bottom Freestanding PoH", "ZF Great Fairy Reward"],
   "Ice Cavern": ["Ice Cavern Map Chest", "Ice Cavern Compass Chest", "Ice Cavern Freestanding PoH", "Ice Cavern Iron Boots Chest", "Sheik in Ice Cavern"],
   "Outside Ganons Castle": ["OGC Great Fairy Reward"],
-  "Ganons Castle": ["Ganons Castle Forest Trial Chest", "Ganons Castle Water Trial Left Chest", "Ganons Castle Water Trial Right Chest", "Ganons Castle Shadow Trial Front Chest", "Ganons Castle Shadow Trial Golden Gauntlets Chest", "Ganons Castle Light Trial First Left Chest", "Ganons Castle Light Trial Second Left Chest", "Ganons Castle Light Trial Third Left Chest", "Ganons Castle Light Trial First Right Chest", "Ganons Castle Light Trial Second Right Chest", "Ganons Castle Light Trial Third Right Chest", "Ganons Castle Light Trial Invisible Enemies Chest", "Ganons Castle Light Trial Lullaby Chest", "Ganons Castle Spirit Trial Crystal Switch Chest", "Ganons Castle Spirit Trial Invisible Chest", "Ganons Tower Boss Key Chest"]
+  "Ganons Castle": ["Ganons Castle Forest Trial Chest", "Ganons Castle Water Trial Left Chest", "Ganons Castle Water Trial Right Chest", "Ganons Castle Shadow Trial Front Chest", "Ganons Castle Shadow Trial Golden Gauntlets Chest", "Ganons Castle Light Trial First Left Chest", "Ganons Castle Light Trial Second Left Chest", "Ganons Castle Light Trial Third Left Chest", "Ganons Castle Light Trial First Right Chest", "Ganons Castle Light Trial Second Right Chest", "Ganons Castle Light Trial Third Right Chest", "Ganons Castle Light Trial Invisible Enemies Chest", "Ganons Castle Light Trial Lullaby Chest", "Ganons Castle Spirit Trial Crystal Switch Chest", "Ganons Castle Spirit Trial Invisible Chest", "Ganons Tower Boss Key Chest", "Light Arrows Hint", "Ganon"]
 };
 
 var skulltulasByRegionAdult = {
@@ -1048,6 +1048,11 @@ var spawnsByRegion = {
     "Zoras Fountain":                ['Zoras Fountain', 'ZF Great Fairy Fountain'],
     "Outside Ganons Castle":         ['OGC Great Fairy Fountain'],
 }
+
+var defaultSpawns = {
+  'Child': 'KF Links House',
+  'Adult': 'Temple of Time'
+};
 
 function getSpawn(spawnFromLog) {
   var region;

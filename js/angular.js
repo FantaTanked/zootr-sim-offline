@@ -568,9 +568,9 @@ $scope.hasBossKey = function(dungeon) {
       var bottles = 0;
       var hasLetter = false;
       for (var i = 0; i < $scope.currentItemsAll.length; i++) {
-        if ($scope.currentItemsAll[i].startsWith('Bottle')) {
+        if ($scope.currentItemsAll[i].startsWith('Bottle') || $scope.currentItemsAll[i].startsWith('Rutos')) {
           bottles++;
-          if ($scope.currentItemsAll[i] == 'Bottle with Letter') {
+          if ($scope.currentItemsAll[i] == 'Rutos Letter') {
             hasLetter = true;
           }
         }
@@ -940,6 +940,17 @@ $scope.hasBossKey = function(dungeon) {
     if (typeof logfile == 'string') {
       logfile = JSON.parse(logfile);
     }
+
+    if (logfile['entrances'] === undefined) logfile['entrances'] = {};
+    if (logfile['entrances']['Child Spawn -> KF Links House'] === undefined){
+      logfile['entrances']['Child Spawn -> KF Links House'] = defaultSpawns['Child'];
+      checked_child_spawn = true;
+    }
+    if (logfile['entrances']['Adult Spawn -> Temple of Time'] === undefined){
+      logfile['entrances']['Adult Spawn -> Temple of Time'] = defaultSpawns['Adult'];
+      checked_adult_spawn = true;
+    }
+
     $scope.currentSpoilerLog = logfile;
     //if (logfile['settings']['entrance_shuffle'] != "off") {
     //  alert("Error! Entrance shuffle is not supported.");
@@ -955,8 +966,8 @@ $scope.hasBossKey = function(dungeon) {
 
     var spawn_age = logfile['randomized_settings']['starting_age'];
 
-    checked_child_spawn = spawn_age == 'child' ? true : false;
-    checked_adult_spawn = spawn_age == 'adult' ? true : false;
+    checked_child_spawn = spawn_age == 'child' ? true : checked_child_spawn;
+    checked_adult_spawn = spawn_age == 'adult' ? true : checked_adult_spawn;
 
     try {
       $scope.currentSeed = logfile[':seed'];
@@ -968,7 +979,7 @@ $scope.hasBossKey = function(dungeon) {
 
       $scope.child_spawn = childRegion;
       child_spawn = childRegion;
-      $scope.child_spawn_text = logfile['randomized_settings']['starting_age'] == 'child' ? childRegionText : '???';      
+      $scope.child_spawn_text = (logfile['randomized_settings']['starting_age'] == 'child' || checked_child_spawn) ? childRegionText : '???';
       child_spawn_text = childRegionText;
 
       var adultRegion = logfile['entrances']['Adult Spawn -> Temple of Time']['region'] === undefined ? logfile['entrances']['Adult Spawn -> Temple of Time'] : logfile['entrances']['Adult Spawn -> Temple of Time']['region'];
@@ -979,7 +990,7 @@ $scope.hasBossKey = function(dungeon) {
       adult_spawn = adultRegion;
       adult_spawn_text = adultRegionText;
       //$scope.adult_spawn_text = logfile['randomized_settings']['starting_age'] == 'adult' ? logfile['entrances']['Adult Spawn -> Temple of Time']['region'] : '???';
-      $scope.adult_spawn_text = logfile['randomized_settings']['starting_age'] == 'adult' ? adultRegionText : '???';;
+      $scope.adult_spawn_text = (logfile['randomized_settings']['starting_age'] == 'adult' || checked_adult_spawn) ? adultRegionText : '???';
       var results = logfile['locations'];
       $scope.fsHash = logfile['file_hash'];
       $scope.isShopsanity = logfile['settings']['shopsanity'] != 'off';
@@ -1016,6 +1027,9 @@ $scope.hasBossKey = function(dungeon) {
       $scope.itemCounts['Gold Skulltula Token'] = 0;
       $scope.itemCounts['Kokiri Sword'] = 0;
       $scope.itemCounts['Nayrus Love'] = 0;
+      for (var item in logfile['starting_items']) {
+        $scope.itemCounts[item] = logfile['starting_items'][item];
+      }
       for (var hint in logfile['gossip_stones']) {
         region = hint.split('(')[0].trim();
         if (region == 'Zoras River') region = 'Zora River';
@@ -1242,7 +1256,7 @@ var shopItemImages = {
   'Bottle with Fairy': 'fairy.png',
   'Bottle with Fish': 'fish.png',
   'Bottle with Green Potion': 'greenpotion.png',
-  'Bottle with Letter': 'bottle-letter.png',
+  'Rutos Letter': 'bottle-letter.png',
   'Bottle with Milk': 'milk.png',
   'Bottle with Poe': 'poe.png',
   'Bottle with Red Potion': 'redpotion.png',
