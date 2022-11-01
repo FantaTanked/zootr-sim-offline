@@ -983,7 +983,7 @@ $scope.hasBossKey = function(dungeon) {
       var results = logfile['locations'];
       $scope.fsHash = logfile['file_hash'];
       $scope.isShopsanity = logfile['settings']['shopsanity'] != 'off';
-      $scope.totalChecks = results.length;
+      $scope.totalChecks = Object.keys(results).length;
       for (var loc in results) {
         item = typeof results[loc] == 'object' ? results[loc]['item'] : results[loc];
         var shop = getShop(loc);
@@ -1176,8 +1176,8 @@ $scope.hasBossKey = function(dungeon) {
     child_spawn = results[31];
 
     checked_adult_spawn = results[36];
-    adult_spawn_text = checked_adult_spawn == true ? results[35] : '???';
-    adult_spawn = results[34];
+    adult_spawn_text = 'Temple of Time';//checked_adult_spawn == true ? results[35] : '???';
+    adult_spawn = 'Temple of Time';//results[34];
 
     for (var i = 0; i < forageItems.length; i++) {
       if (results[i] != null && results[i] != undefined) {   
