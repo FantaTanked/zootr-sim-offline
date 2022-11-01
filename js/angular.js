@@ -951,7 +951,7 @@ $scope.hasBossKey = function(dungeon) {
     // }
 
     child_spawn = logfile['entrances']['Child Spawn -> KF Links House']['region'];
-    adult_spawn = logfile['entrances']['Adult Spawn -> Temple of Time']['region'];   
+    adult_spawn = null;//logfile['entrances']['Adult Spawn -> Temple of Time']['region'];   
 
     var spawn_age = logfile['randomized_settings']['starting_age'];
 
@@ -971,8 +971,8 @@ $scope.hasBossKey = function(dungeon) {
       $scope.child_spawn_text = logfile['randomized_settings']['starting_age'] == 'child' ? childRegionText : '???';      
       child_spawn_text = childRegionText;
 
-      var adultRegion = logfile['entrances']['Adult Spawn -> Temple of Time']['region'] === undefined ? logfile['entrances']['Adult Spawn -> Temple of Time'] : logfile['entrances']['Adult Spawn -> Temple of Time']['region'];
-      var adultRegionText = logfile['entrances']['Adult Spawn -> Temple of Time']['region'] === undefined ? logfile['entrances']['Adult Spawn -> Temple of Time'] : logfile['entrances']['Adult Spawn -> Temple of Time']['region'];
+      var adultRegion = 'Temple of Time';//logfile['entrances']['Adult Spawn -> Temple of Time']['region'] === undefined ? logfile['entrances']['Adult Spawn -> Temple of Time'] : logfile['entrances']['Adult Spawn -> Temple of Time']['region'];
+      var adultRegionText = 'Temple of Time';//logfile['entrances']['Adult Spawn -> Temple of Time']['region'] === undefined ? logfile['entrances']['Adult Spawn -> Temple of Time'] : logfile['entrances']['Adult Spawn -> Temple of Time']['region'];
       adultRegion = getSpawn(adultRegion)
 
       $scope.adult_spawn = adultRegion;
@@ -1156,7 +1156,7 @@ $scope.hasBossKey = function(dungeon) {
 
     
     var localChildSpawn = $scope['currentSpoilerLog']['entrances']['Child Spawn -> KF Links House']['region'] === undefined ? $scope['currentSpoilerLog']['entrances']['Child Spawn -> KF Links House'] : $scope['currentSpoilerLog']['entrances']['Child Spawn -> KF Links House']['region'];
-    var localAdultSpawn = $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time']['region'] === undefined ? $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time'] : $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time']['region'];
+    var localAdultSpawn = 'Temple of Time';//$scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time']['region'] === undefined ? $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time'] : $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time']['region'];
 
     localforage.setItem('child_spawn', getSpawn(localChildSpawn));
     localforage.setItem('child_spawn_text', localChildSpawn);
