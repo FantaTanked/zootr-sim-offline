@@ -144,6 +144,7 @@ div.headerbar {
 
 .title {
   padding:0;
+  padding-right: 178px;
   color:white;
   font-size: 1.5em;
   border:0;
@@ -187,7 +188,7 @@ div.headerbar {
 .credit {
   align-self: flex-end;
   color:white;
-  padding-left: 59px;
+  padding-left: 0px;
   padding-right: 6px;
   padding-bottom: 4px;
 }
