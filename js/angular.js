@@ -469,8 +469,8 @@ $scope.hasBossKey = function(dungeon) {
       $scope.route += 'Savewarp\n';
     }
     else if (entrance == 'Savewarp Adult') {
-      $scope.currentRegion = getSpawn($scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time']['region'] === undefined ? $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time'] : $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time']['region']);
-      $scope.adult_spawn_text = $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time']['region'] === undefined ? $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time'] : $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time']['region'];
+      $scope.currentRegion = getSpawn('Temple of Time');//getSpawn($scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time']['region'] === undefined ? $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time'] : $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time']['region']);
+      $scope.adult_spawn_text = 'Temple of Time';//$scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time']['region'] === undefined ? $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time'] : $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time']['region'];
       checked_adult_spawn = true;
       $scope.route += 'Savewarp\n';
     }
@@ -979,7 +979,7 @@ $scope.hasBossKey = function(dungeon) {
       adult_spawn = adultRegion;
       adult_spawn_text = adultRegionText;
       //$scope.adult_spawn_text = logfile['randomized_settings']['starting_age'] == 'adult' ? logfile['entrances']['Adult Spawn -> Temple of Time']['region'] : '???';
-      $scope.adult_spawn_text = logfile['randomized_settings']['starting_age'] == 'adult' ? adultRegionText : '???';;
+      $scope.adult_spawn_text = adult_spawn_text;//logfile['randomized_settings']['starting_age'] == 'adult' ? adultRegionText : '???';;
       var results = logfile['locations'];
       $scope.fsHash = logfile['file_hash'];
       $scope.isShopsanity = logfile['settings']['shopsanity'] != 'off';
