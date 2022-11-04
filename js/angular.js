@@ -469,8 +469,8 @@ $scope.hasBossKey = function(dungeon) {
       $scope.route += 'Savewarp\n';
     }
     else if (entrance == 'Savewarp Adult') {
-      $scope.currentRegion = getSpawn('Temple of Time');//getSpawn($scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time']['region'] === undefined ? $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time'] : $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time']['region']);
-      $scope.adult_spawn_text = 'Temple of Time';//$scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time']['region'] === undefined ? $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time'] : $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time']['region'];
+      $scope.currentRegion = getSpawn($scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time']['region'] === undefined ? $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time'] : $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time']['region']);
+      $scope.adult_spawn_text = $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time']['region'] === undefined ? $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time'] : $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time']['region'];
       checked_adult_spawn = true;
       $scope.route += 'Savewarp\n';
     }
@@ -568,9 +568,9 @@ $scope.hasBossKey = function(dungeon) {
       var bottles = 0;
       var hasLetter = false;
       for (var i = 0; i < $scope.currentItemsAll.length; i++) {
-        if ($scope.currentItemsAll[i].startsWith('Bottle')) {
+        if ($scope.currentItemsAll[i].startsWith('Bottle') || $scope.currentItemsAll[i].startsWith('Rutos')) {
           bottles++;
-          if ($scope.currentItemsAll[i] == 'Bottle with Letter') {
+          if ($scope.currentItemsAll[i] == 'Rutos Letter') {
             hasLetter = true;
           }
         }
@@ -940,6 +940,17 @@ $scope.hasBossKey = function(dungeon) {
     if (typeof logfile == 'string') {
       logfile = JSON.parse(logfile);
     }
+
+    if (logfile['entrances'] === undefined) logfile['entrances'] = {};
+    if (logfile['entrances']['Child Spawn -> KF Links House'] === undefined){
+      logfile['entrances']['Child Spawn -> KF Links House'] = defaultSpawns['Child'];
+      checked_child_spawn = true;
+    }
+    if (logfile['entrances']['Adult Spawn -> Temple of Time'] === undefined){
+      logfile['entrances']['Adult Spawn -> Temple of Time'] = defaultSpawns['Adult'];
+      checked_adult_spawn = true;
+    }
+
     $scope.currentSpoilerLog = logfile;
     //if (logfile['settings']['entrance_shuffle'] != "off") {
     //  alert("Error! Entrance shuffle is not supported.");
@@ -951,12 +962,12 @@ $scope.hasBossKey = function(dungeon) {
     // }
 
     child_spawn = logfile['entrances']['Child Spawn -> KF Links House']['region'];
-    adult_spawn = null;//logfile['entrances']['Adult Spawn -> Temple of Time']['region'];   
+    adult_spawn = logfile['entrances']['Adult Spawn -> Temple of Time']['region'];   
 
     var spawn_age = logfile['randomized_settings']['starting_age'];
 
-    checked_child_spawn = spawn_age == 'child' ? true : false;
-    checked_adult_spawn = spawn_age == 'adult' ? true : false;
+    checked_child_spawn = spawn_age == 'child' ? true : checked_child_spawn;
+    checked_adult_spawn = spawn_age == 'adult' ? true : checked_adult_spawn;
 
     try {
       $scope.currentSeed = logfile[':seed'];
@@ -968,18 +979,18 @@ $scope.hasBossKey = function(dungeon) {
 
       $scope.child_spawn = childRegion;
       child_spawn = childRegion;
-      $scope.child_spawn_text = logfile['randomized_settings']['starting_age'] == 'child' ? childRegionText : '???';      
+      $scope.child_spawn_text = (logfile['randomized_settings']['starting_age'] == 'child' || checked_child_spawn) ? childRegionText : '???';
       child_spawn_text = childRegionText;
 
-      var adultRegion = 'Temple of Time';//logfile['entrances']['Adult Spawn -> Temple of Time']['region'] === undefined ? logfile['entrances']['Adult Spawn -> Temple of Time'] : logfile['entrances']['Adult Spawn -> Temple of Time']['region'];
-      var adultRegionText = 'Temple of Time';//logfile['entrances']['Adult Spawn -> Temple of Time']['region'] === undefined ? logfile['entrances']['Adult Spawn -> Temple of Time'] : logfile['entrances']['Adult Spawn -> Temple of Time']['region'];
+      var adultRegion = logfile['entrances']['Adult Spawn -> Temple of Time']['region'] === undefined ? logfile['entrances']['Adult Spawn -> Temple of Time'] : logfile['entrances']['Adult Spawn -> Temple of Time']['region'];
+      var adultRegionText = logfile['entrances']['Adult Spawn -> Temple of Time']['region'] === undefined ? logfile['entrances']['Adult Spawn -> Temple of Time'] : logfile['entrances']['Adult Spawn -> Temple of Time']['region'];
       adultRegion = getSpawn(adultRegion)
 
       $scope.adult_spawn = adultRegion;
       adult_spawn = adultRegion;
       adult_spawn_text = adultRegionText;
       //$scope.adult_spawn_text = logfile['randomized_settings']['starting_age'] == 'adult' ? logfile['entrances']['Adult Spawn -> Temple of Time']['region'] : '???';
-      $scope.adult_spawn_text = adult_spawn_text;//logfile['randomized_settings']['starting_age'] == 'adult' ? adultRegionText : '???';;
+      $scope.adult_spawn_text = (logfile['randomized_settings']['starting_age'] == 'adult' || checked_adult_spawn) ? adultRegionText : '???';
       var results = logfile['locations'];
       $scope.fsHash = logfile['file_hash'];
       $scope.isShopsanity = logfile['settings']['shopsanity'] != 'off';
@@ -1016,6 +1027,9 @@ $scope.hasBossKey = function(dungeon) {
       $scope.itemCounts['Gold Skulltula Token'] = 0;
       $scope.itemCounts['Kokiri Sword'] = 0;
       $scope.itemCounts['Nayrus Love'] = 0;
+      for (var item in logfile['starting_items']) {
+        $scope.itemCounts[item] = logfile['starting_items'][item];
+      }
       for (var hint in logfile['gossip_stones']) {
         region = hint.split('(')[0].trim();
         if (region == 'Zoras River') region = 'Zora River';
@@ -1156,7 +1170,7 @@ $scope.hasBossKey = function(dungeon) {
 
     
     var localChildSpawn = $scope['currentSpoilerLog']['entrances']['Child Spawn -> KF Links House']['region'] === undefined ? $scope['currentSpoilerLog']['entrances']['Child Spawn -> KF Links House'] : $scope['currentSpoilerLog']['entrances']['Child Spawn -> KF Links House']['region'];
-    var localAdultSpawn = 'Temple of Time';//$scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time']['region'] === undefined ? $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time'] : $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time']['region'];
+    var localAdultSpawn = $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time']['region'] === undefined ? $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time'] : $scope['currentSpoilerLog']['entrances']['Adult Spawn -> Temple of Time']['region'];
 
     localforage.setItem('child_spawn', getSpawn(localChildSpawn));
     localforage.setItem('child_spawn_text', localChildSpawn);
@@ -1176,8 +1190,8 @@ $scope.hasBossKey = function(dungeon) {
     child_spawn = results[31];
 
     checked_adult_spawn = results[36];
-    adult_spawn_text = 'Temple of Time';//checked_adult_spawn == true ? results[35] : '???';
-    adult_spawn = 'Temple of Time';//results[34];
+    adult_spawn_text = checked_adult_spawn == true ? results[35] : '???';
+    adult_spawn = results[34];
 
     for (var i = 0; i < forageItems.length; i++) {
       if (results[i] != null && results[i] != undefined) {   
@@ -1242,7 +1256,7 @@ var shopItemImages = {
   'Bottle with Fairy': 'fairy.png',
   'Bottle with Fish': 'fish.png',
   'Bottle with Green Potion': 'greenpotion.png',
-  'Bottle with Letter': 'bottle-letter.png',
+  'Rutos Letter': 'bottle-letter.png',
   'Bottle with Milk': 'milk.png',
   'Bottle with Poe': 'poe.png',
   'Bottle with Red Potion': 'redpotion.png',

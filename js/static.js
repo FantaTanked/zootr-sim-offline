@@ -16,7 +16,7 @@ var importantItems = [
   'Ocarina of Time',
   'Ocarina',
   'Bottle',
-  'Bottle with Letter',
+  'Rutos Letter',
   'Bottle with Milk',
   'Bottle with Red Potion',
   'Bottle with Green Potion',
@@ -294,11 +294,11 @@ var hintItemsMeanings = {
   "an empty jar": "Bottle",
   "encased air": "Bottle",
   "a Bottle": "Bottle",
-  "a call for help": "Bottle with Letter",
-  "the note that Mweeps": "Bottle with Letter",
-  "an SOS call": "Bottle with Letter",
-  "a fishy stationery": "Bottle with Letter",
-  "Ruto's Letter": "Bottle with Letter",
+  "a call for help": "Rutos Letter",
+  "the note that Mweeps": "Rutos Letter",
+  "an SOS call": "Rutos Letter",
+  "a fishy stationery": "Rutos Letter",
+  "Ruto's Letter": "Rutos Letter",
   "cow juice": "Bottle with Milk",
   "a white liquid": "Bottle with Milk",
   "a baby's breakfast": "Bottle with Milk",
@@ -861,6 +861,7 @@ var entrancesByRegionChild = {
   'Lon Lon Ranch': ['Hyrule Field'],
   'Lake Hylia': ['Hyrule Field', 'Zoras Domain'],
   'Gerudo Valley': ['Hyrule Field', 'Lake Hylia'],
+  'Gerudo Fortress': ['Gerudo Valley'],
   'Desert Colossus': ['Spirit Temple', 'Haunted Wasteland'],
   'Haunted Wasteland': ['Desert Colossus'],
   'Spirit Temple': ['Desert Colossus'],
@@ -1047,7 +1048,12 @@ var spawnsByRegion = {
     "Death Mountain Crater":         ['DMC Lower Local', 'DMC Lower Nearby', 'DMC Upper Local', 'DMC Upper Nearby', 'DMC Great Fairy Fountain'],
     "Zoras Fountain":                ['Zoras Fountain', 'ZF Great Fairy Fountain'],
     "Outside Ganons Castle":         ['OGC Great Fairy Fountain'],
-}
+};
+
+var defaultSpawns = {
+  'Child': 'KF Links House',
+  'Adult': 'Temple of Time',
+};
 
 function getSpawn(spawnFromLog) {
   var region;
