@@ -994,7 +994,7 @@ $scope.hasBossKey = function(dungeon) {
       var results = logfile['locations'];
       $scope.fsHash = logfile['file_hash'];
       $scope.isShopsanity = logfile['settings']['shopsanity'] != 'off';
-      $scope.totalChecks = results.length;
+      $scope.totalChecks = Object.keys(results).length;
       for (var loc in results) {
         item = typeof results[loc] == 'object' ? results[loc]['item'] : results[loc];
         var shop = getShop(loc);

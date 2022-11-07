@@ -26,7 +26,7 @@
 		<div class="hash"><span class="hash-label" ng-if="fsHash.length &gt; 0">HASH</span>
 			<div class="hash-item" ng-repeat="x in fsHash track by $index" id="{{x}}"
 				style="background-image: url('images/zootr-sim/{{hashImages[x]}}')"></div>
-		</div><span class="credit">made by scatter / updated by fanta</span>
+		</div><span class="credit">made by scatter / updated by fanta, mrmario, and maxx</span>
 	</div><a href="" ng-click="toggleDarkMode()" id="dark-mode-toggle">{{darkModeOn ? 'Light' : 'Dark'}} Mode</a><a
 		href="" ng-click="downloadSpoilerLog()" ng-if="currentSpoilerLog != ''" id="spoiler-download">Download Spoiler
 		Log</a>
@@ -40,7 +40,7 @@
 		</div>
 		<div class="start" ng-show="!playing">	
 			<div class="startright"><span class="header">Upload a log</span><br><span class="subheader">Upload a
-					preexisting v6.1 spoiler log</span><br><br><input type="file" id="files"
+					preexisting v6.2 spoiler log</span><br><br><input type="file" id="files"
 					custom-on-change="fileSelected" ng-model="file"></div><br>{{spoiler}}
 		</div><span ng-show="playing &amp;&amp; !finished">
 			<div class="lastchecked">{{lastchecked}}</div><br>
@@ -80,7 +80,7 @@
 
 					<img class="peekicon"
 						ng-repeat-start="loc in getAvailableLocations()"
-						ng-if="(loc.includes('Freestanding') || loc == 'Underwater Bottle') &amp;&amp; !hasPeeked(loc)"
+						ng-if="(loc.includes('Freestanding') || loc == 'LH Underwater Item') &amp;&amp; !hasPeeked(loc)"
 						ng-click="peekAt(loc)" src="images/zootr-sim/eye.png" draggable="false">
 
 					<a class="location"						

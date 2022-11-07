@@ -1,4 +1,4 @@
-zootr-sim-offline - works with 6.1
+zootr-sim-offline - works with 6.2
 
 https://fantatanked.github.io/zootr-sim-offline/
 

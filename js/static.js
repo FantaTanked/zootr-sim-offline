@@ -294,11 +294,11 @@ var hintItemsMeanings = {
   "an empty jar": "Bottle",
   "encased air": "Bottle",
   "a Bottle": "Bottle",
-  "a call for help": "Bottle with Letter",
-  "the note that Mweeps": "Bottle with Letter",
-  "an SOS call": "Bottle with Letter",
-  "a fishy stationery": "Bottle with Letter",
-  "Ruto's Letter": "Bottle with Letter",
+  "a call for help": "Rutos Letter",
+  "the note that Mweeps": "Rutos Letter",
+  "an SOS call": "Rutos Letter",
+  "a fishy stationery": "Rutos Letter",
+  "Ruto's Letter": "Rutos Letter",
   "cow juice": "Bottle with Milk",
   "a white liquid": "Bottle with Milk",
   "a baby's breakfast": "Bottle with Milk",
@@ -861,6 +861,7 @@ var entrancesByRegionChild = {
   'Lon Lon Ranch': ['Hyrule Field'],
   'Lake Hylia': ['Hyrule Field', 'Zoras Domain'],
   'Gerudo Valley': ['Hyrule Field', 'Lake Hylia'],
+  'Gerudo Fortress': ['Gerudo Valley'],
   'Desert Colossus': ['Spirit Temple', 'Haunted Wasteland'],
   'Haunted Wasteland': ['Desert Colossus'],
   'Spirit Temple': ['Desert Colossus'],
@@ -910,13 +911,13 @@ var locationsByRegionAdult = {
   "Water Temple": ["Water Temple Longshot Chest", "Water Temple Compass Chest", "Water Temple Map Chest", "Water Temple Cracked Wall Chest", "Water Temple Torches Chest", "Water Temple Boss Key Chest", "Water Temple Central Pillar Chest", "Water Temple Central Bow Target Chest", "Water Temple River Chest", "Water Temple Dragon Chest", "Water Temple Morpha Heart", "Morpha"],
   "Gerudo Valley": ["GV Crate Freestanding PoH", "GV Waterfall Freestanding PoH", "GV Chest"],
   "Gerudo Fortress": ["GF Chest", "GF HBA 1000 Points", "GF HBA 1500 Points"],
-  "Gerudo Training Ground": ["Gerudo Training Ground Underwater Silver Rupee Chest", "Gerudo Training Ground Lobby Left Chest", "Gerudo Training Ground Lobby Right Chest", "Gerudo Training Ground Stalfos Chest", "Gerudo Training Ground Before Heavy Block Chest", "Gerudo Training Ground Heavy Block First Chest", "Gerudo Training Ground Heavy Block Second Chest", "Gerudo Training Ground Heavy Block Third Chest", "Gerudo Training Ground Heavy Block Fourth Chest", "Gerudo Training Ground Eye Statue Chest", "Gerudo Training Ground Near Scarecrow Chest", "Gerudo Training Ground Hammer Room Clear Chest", "Gerudo Training Ground Hammer Room Switch Chest", "Gerudo Training Ground Freestanding Key", "Gerudo Training Ground Maze Right Central Chest", "Gerudo Training Ground Maze Right Side Chest", 'Gerudo Training Ground Underwater Silver Rupee Chest"', "Gerudo Training Ground Beamos Chest", "Gerudo Training Ground Hidden Ceiling Chest", "Gerudo Training Ground Maze Path First Chest", "Gerudo Training Ground Maze Path Second Chest", "Gerudo Training Ground Maze Path Third Chest", "Gerudo Training Ground Maze Path Final Chest"],
+  "Gerudo Training Ground": ["Gerudo Training Ground Lobby Left Chest", "Gerudo Training Ground Lobby Right Chest", "Gerudo Training Ground Stalfos Chest", "Gerudo Training Ground Before Heavy Block Chest", "Gerudo Training Ground Heavy Block First Chest", "Gerudo Training Ground Heavy Block Second Chest", "Gerudo Training Ground Heavy Block Third Chest", "Gerudo Training Ground Heavy Block Fourth Chest", "Gerudo Training Ground Eye Statue Chest", "Gerudo Training Ground Near Scarecrow Chest", "Gerudo Training Ground Hammer Room Clear Chest", "Gerudo Training Ground Hammer Room Switch Chest", "Gerudo Training Ground Freestanding Key", "Gerudo Training Ground Maze Right Central Chest", "Gerudo Training Ground Maze Right Side Chest", "Gerudo Training Ground Underwater Silver Rupee Chest", "Gerudo Training Ground Beamos Chest", "Gerudo Training Ground Hidden Ceiling Chest", "Gerudo Training Ground Maze Path First Chest", "Gerudo Training Ground Maze Path Second Chest", "Gerudo Training Ground Maze Path Third Chest", "Gerudo Training Ground Maze Path Final Chest"],
   "Haunted Wasteland": ["Wasteland Chest"],
   "Desert Colossus": ["Colossus Freestanding PoH", "Colossus Great Fairy Reward", "Sheik at Colossus"],
   "Spirit Temple": ["Spirit Temple Child Climb North Chest", "Spirit Temple Child Climb East Chest", "Spirit Temple Map Chest", "Spirit Temple Sun Block Room Chest", "Spirit Temple Silver Gauntlets Chest", "Spirit Temple Compass Chest", "Spirit Temple Early Adult Right Chest", "Spirit Temple First Mirror Left Chest", "Spirit Temple First Mirror Right Chest", "Spirit Temple Statue Room Northeast Chest", "Spirit Temple Statue Room Hand Chest", "Spirit Temple Near Four Armos Chest", "Spirit Temple Hallway Right Invisible Chest", "Spirit Temple Hallway Left Invisible Chest", "Spirit Temple Mirror Shield Chest", "Spirit Temple Boss Key Chest", "Spirit Temple Topmost Chest", "Spirit Temple Twinrova Heart", "Twinrova"],
   "Kakariko Village": ["Song from Windmill", "Sheik in Kakariko", "Kak Anju as Adult", "Kak Impas House Freestanding PoH", "Kak Windmill Freestanding PoH", "Kak Man on Roof", "Kak Open Grotto Chest", "Kak Redead Grotto Chest", "Kak Shooting Gallery Reward", "Kak 10 Gold Skulltula Reward", "Kak 20 Gold Skulltula Reward", "Kak 30 Gold Skulltula Reward", "Kak 40 Gold Skulltula Reward", "Kak 50 Gold Skulltula Reward"],
   "Graveyard": ["Song from Royal Familys Tomb", "Graveyard Shield Grave Chest", "Graveyard Heart Piece Grave Chest", "Graveyard Royal Familys Tomb Chest", "Graveyard Freestanding PoH", "Graveyard Dampe Race Hookshot Chest", "Graveyard Dampe Race Freestanding PoH"],
-  "Shadow Temple": ["Shadow Temple vanilla", "Shadow Temple Map Chest", "Shadow Temple Hover Boots Chest", "Shadow Temple Compass Chest", "Shadow Temple Early Silver Rupee Chest", "Shadow Temple Invisible Blades Visible Chest", "Shadow Temple Invisible Blades Invisible Chest", "Shadow Temple Falling Spikes Lower Chest", "Shadow Temple Falling Spikes Upper Chest", "Shadow Temple Falling Spikes Switch Chest", "Shadow Temple Invisible Spikes Chest", "Shadow Temple Freestanding Key", "Shadow Temple Wind Hint Chest", "Shadow Temple After Wind Enemy Chest", "Shadow Temple After Wind Hidden Chest", "Shadow Temple Spike Walls Left Chest", "Shadow Temple Boss Key Chest", "Shadow Temple Invisible Floormaster Chest", "Shadow Temple Bongo Bongo Heart", "Bongo Bongo"],
+  "Shadow Temple": ["Shadow Temple Map Chest", "Shadow Temple Hover Boots Chest", "Shadow Temple Compass Chest", "Shadow Temple Early Silver Rupee Chest", "Shadow Temple Invisible Blades Visible Chest", "Shadow Temple Invisible Blades Invisible Chest", "Shadow Temple Falling Spikes Lower Chest", "Shadow Temple Falling Spikes Upper Chest", "Shadow Temple Falling Spikes Switch Chest", "Shadow Temple Invisible Spikes Chest", "Shadow Temple Freestanding Key", "Shadow Temple Wind Hint Chest", "Shadow Temple After Wind Enemy Chest", "Shadow Temple After Wind Hidden Chest", "Shadow Temple Spike Walls Left Chest", "Shadow Temple Boss Key Chest", "Shadow Temple Invisible Floormaster Chest", "Shadow Temple Bongo Bongo Heart", "Bongo Bongo"],
   "Death Mountain Trail": ["DMT Freestanding PoH", "DMT Chest", "DMT Storms Grotto Chest", "DMT Great Fairy Reward", "DMT Biggoron"],
   "Death Mountain Crater": ["DMC Volcano Freestanding PoH", "DMC Wall Freestanding PoH", "DMC Upper Grotto Chest", "DMC Great Fairy Reward", "Sheik in Crater"],
   "Fire Temple": ["Fire Temple Near Boss Chest", "Fire Temple Flare Dancer Chest", "Fire Temple Boss Key Chest", "Fire Temple Big Lava Room Lower Open Door Chest", "Fire Temple Big Lava Room Blocked Door Chest", "Fire Temple Boulder Maze Lower Chest", "Fire Temple Boulder Maze Side Room Chest", "Fire Temple Map Chest", "Fire Temple Boulder Maze Shortcut Chest", "Fire Temple Boulder Maze Upper Chest", "Fire Temple Scarecrow Chest", "Fire Temple Compass Chest", "Fire Temple Megaton Hammer Chest", "Fire Temple Highest Goron Chest", "Fire Temple Volvagia Heart", "Volvagia"],
@@ -1047,7 +1048,12 @@ var spawnsByRegion = {
     "Death Mountain Crater":         ['DMC Lower Local', 'DMC Lower Nearby', 'DMC Upper Local', 'DMC Upper Nearby', 'DMC Great Fairy Fountain'],
     "Zoras Fountain":                ['Zoras Fountain', 'ZF Great Fairy Fountain'],
     "Outside Ganons Castle":         ['OGC Great Fairy Fountain'],
-}
+};
+
+var defaultSpawns = {
+  'Child': 'KF Links House',
+  'Adult': 'Temple of Time',
+};
 
 var defaultSpawns = {
   'Child': 'KF Links House',
