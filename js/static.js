@@ -1055,6 +1055,11 @@ var defaultSpawns = {
   'Adult': 'Temple of Time',
 };
 
+var defaultSpawns = {
+  'Child': 'KF Links House',
+  'Adult': 'Temple of Time'
+};
+
 function getSpawn(spawnFromLog) {
   var region;
   Object.keys(spawnsByRegion).forEach(function(item) { 
